@@ -45,6 +45,8 @@ function render(){
  if(v.type==="groupitems")html+=renderGroupItems(v);
  if(v.type==="outside")html+=renderOutside(v.table);
  html+=`</main>`;document.querySelector("#app").innerHTML=html;
+ if(v.type==="categories"&&v.searchTerm){const input=document.querySelector("#globalSearch");if(input){input.value=v.searchTerm;globalSearch(v.table,v.searchTerm,false)}}
+ if(v.type==="products"&&v.wineSearch){const input=document.querySelector("#wineSearch");if(input){input.value=v.wineSearch;filterWine(v.wineSearch,false)}}
 }
 function renderTables(){
  let h=titleBar("Mesas");
@@ -89,8 +91,10 @@ let serveHoldTimer=null,serveHoldTriggered=false;
 function serveHoldStart(n,id){serveHoldTriggered=false;clearTimeout(serveHoldTimer);serveHoldTimer=setTimeout(()=>{serveHoldTriggered=true;openServeAdmin(n,id)},650)}
 function serveHoldEnd(){clearTimeout(serveHoldTimer)}
 function openServeAdmin(n,id){
- const o=table(n).orders.find(x=>x.id===id);if(!o||!o.marched)return;
- modal(o.name,"<p>Este producto está marchado.</p>",[{label:"Cancelar"},{label:"DESMARCHAR",danger:true,action:()=>{o.marched=false;o.served=false;save();closeModal();render()}}])
+ const o=table(n).orders.find(x=>x.id===id);if(!o||!o.marched||o.served)return;
+ o.marched=false;o.served=false;
+ if(o.rice){o.timerEnd=null;o.timerAck=false;alarmIds.delete(o.id);document.querySelector("#alarm-"+o.id)?.remove()}
+ save();render()
 }
 function renderTable(n){
  const t=table(n);let h=titleBar(`Mesa ${n} · x${t.diners}`,true);
@@ -101,20 +105,33 @@ function renderTable(n){
    <div class="order-main" onclick="orderActions(${n},'${o.id}')">
     <div class="order-title">${esc(o.name)} ${o.qty>1?`x${o.qty}`:""}</div>
     ${o.note?`<div class="order-note">${esc(o.note)}</div>`:""}
-    ${o.rice?`<div class="order-meta">${o.reserved?"ENCARGADO":"NO ENCARGADO"} · ${o.qty} raciones ${o.timerEnd&&!o.timerAck?`· ⏱ <span data-timer="${o.id}">${fmt(o.timerEnd-Date.now())}</span>`:(!o.timerEnd?`· TEMPORIZADOR SIN INICIAR`:"")}</div>`:""}
+    ${o.rice?`<div class="order-meta">${o.reserved?"ENCARGADO":"NO ENCARGADO"} · ${o.qty} raciones ${o.timerEnd&&!o.timerAck?`· ⏱ <span data-timer="${o.id}">${fmt(o.timerEnd-Date.now())}</span>`:(!o.marched?`· SIN MARCHAR`:"")}</div>`:""}
    </div><button class="serve" oncontextmenu="event.preventDefault();event.stopPropagation();openServeAdmin(${n},'${o.id}')" onpointerdown="event.stopPropagation();serveHoldStart(${n},'${o.id}')" onpointerup="serveHoldEnd()" onpointercancel="serveHoldEnd()" onpointerleave="serveHoldEnd()" onclick="event.stopPropagation();if(serveHoldTriggered){serveHoldTriggered=false;return}toggleServed(${n},'${o.id}')">${o.served?"✓":"□"}</button></div>`
  });
  h+=`</div><button class="bottom-action march-action" onclick="marchTable(${n})">MARCHADO</button><button class="bottom-action ${t.paid?"paid":""}" onclick="${t.paid?`finishTable(${n})`:`payTable(${n})`}">${t.paid?"TERMINAR":"PAGAR"}</button>`;return h
 }
 function editDiners(n){const t=table(n);modal("Editar comensales",`<input id="diners" type="number" inputmode="numeric" min="1" value="${t.diners}">`,[{label:"Cancelar"},{label:"Guardar",primary:true,action:()=>{let x=parseInt(document.querySelector("#diners").value);if(x>0){t.diners=x;save();closeModal();render()}}}])}
-function marchTable(n){const t=table(n);let changed=false;t.orders.forEach(o=>{if(!o.served&&!o.marched){o.marched=true;changed=true}});if(changed){save();render()}}
-function toggleServed(n,id){let o=table(n).orders.find(x=>x.id===id);o.served=!o.served;save();render()}
+function startRiceTimerOnMarch(o){
+ if(!o?.rice||o.timerEnd)return;
+ o.timerEnd=Date.now()+((o.reserved?o.reservedMinutes:o.notReservedMinutes)*60000);o.timerAck=false;requestNotify()
+}
+function clearRiceTimer(o){
+ if(!o?.rice)return;
+ o.timerEnd=null;o.timerAck=true;alarmIds.delete(o.id);document.querySelector("#alarm-"+o.id)?.remove()
+}
+function marchTable(n){const t=table(n);let changed=false;t.orders.forEach(o=>{if(!o.served&&!o.marched){o.marched=true;startRiceTimerOnMarch(o);changed=true}});if(changed){save();render()}}
+function toggleServed(n,id){
+ let o=table(n).orders.find(x=>x.id===id);if(!o)return;
+ if(!o.marched){o.marched=true;o.served=false;startRiceTimerOnMarch(o)}
+ else if(!o.served){o.served=true;clearRiceTimer(o)}
+ else return;
+ save();render()
+}
 function orderActions(n,id){
  const o=table(n).orders.find(x=>x.id===id);
  let body=`<div class="actions one"><button class="btn" onclick="editNote(${n},'${id}')">Añadir / editar nota</button><button class="btn" onclick="editQty(${n},'${id}')">Editar cantidad</button>`;
  if(o.rice){
   body+=`<button class="btn" onclick="editRice(${n},'${id}')">Editar encargado / raciones</button>`;
-  if(!o.timerEnd)body+=`<button class="btn" onclick="startRiceTimer(${n},'${id}')">Empezar temporizador</button>`;
  }
  body+=`<button class="btn red" onclick="deleteOrder(${n},'${id}')">Eliminar</button></div>`;
  modal(o.name,body,[])
@@ -158,8 +175,10 @@ function flattenGeneral(){
  state.outOfMenu.forEach(name=>out.push({name,cat:"outside",leafName:name,custom:true}));
  return out
 }
-function globalSearch(n,q){
- const box=document.querySelector("#searchResults");q=normalizeSearch(q.trim());if(!q){box.innerHTML="";searchCache=[];return}
+function globalSearch(n,q,remember=true){
+ const box=document.querySelector("#searchResults");if(!box)return;
+ if(remember&&currentView().type==="categories")currentView().searchTerm=q;
+ q=normalizeSearch(q.trim());if(!q){box.innerHTML="";searchCache=[];return}
  searchCache=flattenGeneral().filter(p=>normalizeSearch(p.name).includes(q)).slice(0,30);
  box.innerHTML=`<div class="product-grid">${searchCache.map((p,i)=>productBtn(p.name,`addSearchIndex(${n},${i})`,"",p.custom?"custom":"normal")).join("")}</div>`
 }
@@ -167,10 +186,10 @@ function addSearchIndex(n,i){const p=searchCache[i];if(!p)return;if(p.leafName)a
 function renderProducts(v){
  const cat=categories.find(c=>c.id===v.cat),list=products[v.cat]||[];
  let h=titleBar(cat.name);
- if(cat.wine)h+=`<input class="search" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value)">`;
+ if(cat.wine)h+=`<input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value)">`;
  h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine":"")).join("")}</div>`;return h
 }
-function filterWine(q){q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
+function filterWine(q,remember=true){if(remember&&currentView().type==="products")currentView().wineSearch=q;q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
 function selectProduct(n,cat,i){
  const p=products[cat][i];
  if(cat==="cafes")return askCoffee(n,p);
@@ -218,11 +237,7 @@ function askRice(n,p){
 }
 function riceStep2(reserved){
  const {n,p}=window.pendingRice;window.pendingRice={n,p,reserved};
- modal(p.name,`<p>${reserved?"ENCARGADO":"NO ENCARGADO"}</p><p>¿Empieza ya el temporizador?</p><div class="choice-grid"><button class="choice" onclick="riceStep3(true)">SÍ</button><button class="choice" onclick="riceStep3(false)">NO</button></div>`,[])
-}
-function riceStep3(startTimer){
- const {n,p,reserved}=window.pendingRice;window.pendingRice={n,p,reserved,startTimer};
- modal(p.name,`<p>${reserved?"ENCARGADO":"NO ENCARGADO"} · ${startTimer?"INICIAR TEMPORIZADOR":"SIN INICIAR TEMPORIZADOR"}</p><label>Número de raciones</label><input id="qty" type="number" inputmode="numeric" min="1" autofocus>`,[{label:"Cancelar"},{label:"Añadir",primary:true,action:()=>{let q=parseInt(document.querySelector("#qty").value);if(q>0){let mins=reserved?p.reservedMinutes:p.notReservedMinutes;table(n).orders.push({id:uid(),name:p.name,qty:q,note:"",served:false,rice:true,reserved,reservedMinutes:p.reservedMinutes,notReservedMinutes:p.notReservedMinutes,timerEnd:startTimer?Date.now()+mins*60000:null,timerAck:false});save();closeModal();render();showAddedToast(p.name,q);if(startTimer)requestNotify()}}}])
+ modal(p.name,`<p>${reserved?"ENCARGADO":"NO ENCARGADO"}</p><label>Número de raciones</label><input id="qty" type="number" inputmode="numeric" min="1" autofocus>`,[{label:"Cancelar"},{label:"Añadir",primary:true,action:()=>{let q=parseInt(document.querySelector("#qty").value);if(q>0){table(n).orders.push({id:uid(),name:p.name,qty:q,note:"",served:false,marched:false,rice:true,reserved,reservedMinutes:p.reservedMinutes,notReservedMinutes:p.notReservedMinutes,timerEnd:null,timerAck:false});save();closeModal();render();showAddedToast(p.name,q)}}}])
 }
 function askCoffee(n,p){
  const solo=p.name==="Solo"||p.name==="Solo descaf";

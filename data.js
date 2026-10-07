@@ -233,8 +233,7 @@ window.APP_DATA = {
     ],
     "frios": [
       {
-        "name": "Pan",
-        "quantityPrompt": true
+        "name": "Pan"
       },
       {
         "name": "Mortero"
@@ -309,142 +308,142 @@ window.APP_DATA = {
       {
         "name": "Paella Valenciana de Pollo y Conejo",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Paella de Magret de Pato y Foie",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Paella de Secreto Ibérico",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Paella de Verduras de temporada",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       }
     ],
     "paellas-mar": [
       {
         "name": "Paella de Marisco",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Arroz Negro",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Arroz del Senyoret",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Paella de Marisco Especial",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Paella de Bogavante Azul",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Paella de Plancton marino y Gamba rayada",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       },
       {
         "name": "Paella de Rojos",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
       }
     ],
     "melosos": [
       {
         "name": "Meloso de Magret de Pato y Foie",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "Meloso con Bogavante Azul",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "Meloso de Marisco",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "Meloso de Rojos",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       }
     ],
     "fideuas": [
       {
         "name": "FIFI de Marisco",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "FIFI de Plancton marino y Gamba rayada",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "FIFI de Marisco Especial",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "FIFI de Magret de Pato y Foie",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "FIFI de Verduras de temporada",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       }
     ],
     "especiales": [
       {
         "name": "Espardenyà",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       },
       {
         "name": "Arroz amb Fesols i Naps",
         "rice": true,
-        "reservedMinutes": 32,
-        "notReservedMinutes": 47
+        "reservedMinutes": 25,
+        "notReservedMinutes": 40
       }
     ],
     "pescado": [
