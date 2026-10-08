@@ -227,9 +227,6 @@ window.APP_DATA = {
         "name": "Solo descaf"
       },
       {
-        "name": "Café Americano"
-      },
-      {
         "name": "Cortado"
       },
       {
@@ -248,13 +245,36 @@ window.APP_DATA = {
         "name": "Café con leche descaf"
       },
       {
-        "name": "Infusiones"
+        "name": "Carajillo",
+        "children": [
+          "Terry",
+          "Maria Brizar",
+          "Negrita",
+          "Whisky",
+          "Baileys"
+        ]
       },
       {
-        "name": "Carajillo"
+        "name": "Carajillo descaf",
+        "children": [
+          "Terry",
+          "Maria Brizar",
+          "Negrita",
+          "Whisky",
+          "Baileys"
+        ]
       },
       {
-        "name": "Carajillo descaf"
+        "name": "Americano"
+      },
+      {
+        "name": "Americano descaf"
+      },
+      {
+        "name": "Capuchino"
+      },
+      {
+        "name": "Capuchino descaf"
       },
       {
         "name": "Cremaet"
@@ -263,10 +283,23 @@ window.APP_DATA = {
         "name": "Cremaet descaf"
       },
       {
-        "name": "Capuchino"
+        "name": "Cortado desc sobre"
       },
       {
-        "name": "Capuchino descaf"
+        "name": "Infusiones",
+        "children": [
+          "Poleo",
+          "Manzanilla",
+          "Té verde",
+          "Té rojo",
+          "Rooibos",
+          "Poleo tiempo",
+          "Manzanilla tiempo",
+          "Té verde tiempo",
+          "Té rojo tiempo",
+          "Tila",
+          "Té negro"
+        ]
       }
     ],
     "frios": [

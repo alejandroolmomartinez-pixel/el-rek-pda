@@ -205,23 +205,25 @@ function globalSearch(n,q,remember=true){
 }
 function addSearchIndex(n,i){const p=searchCache[i];if(!p)return;if(p.leafName)addNamed(n,p.leafName);else addProduct(n,p)}
 const DRINK_CLASSES={"Agua":"drink-0","Agua con gas":"drink-1","Tercios":"drink-2","Caña":"drink-3","Doble":"drink-4","Doble de Radler":"drink-5","Pinta":"drink-6","Copa de tinto":"drink-7","Copa de blanco":"drink-8","Copa de rosado":"drink-9","Copa cava":"drink-10","Sangría":"drink-11","Tinto de verano":"drink-12","Sangría de cava":"drink-13","Martini rojo":"drink-14","Martini blanco":"drink-15","Nestea":"drink-16","Nestea de maracuyá":"drink-17","Fanta de limón":"drink-18","Fanta de naranja":"drink-19","Aquarius limón":"drink-20","Aquarius naranja":"drink-21","Coca-Cola":"drink-22","Coca-Cola 0":"drink-23","Coca-Cola 00":"drink-24","Sprite":"drink-25","Tónica":"drink-26","Bitter Kas":"drink-27","Gaseosa":"drink-28","Zumo de piña":"drink-29","Zumo de melocotón":"drink-30","Izaguirre/Vermut":"drink-31","Izaguirre rojo":"drink-32","Agua de Valencia":"drink-33"};
-function drinkClass(name){if(DRINK_CLASSES[name])return DRINK_CLASSES[name];if(name.startsWith("Tercios · "))return DRINK_CLASSES["Tercios"];return ""}
+function drinkClass(name){return {"Copa de tinto":"drink-7","Copa de blanco":"drink-8","Copa de rosado":"drink-9","Copa cava":"drink-10"}[name]||""}
+function coffeeClass(name){return name==="Infusiones"?"coffee-infusion":name.includes("desc")?"coffee-decaf":"coffee-regular"}
 function renderProducts(v){
  const cat=categories.find(c=>c.id===v.cat),list=products[v.cat]||[];
  let h=titleBar(cat.name);
  if(cat.wine)h+=`<input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value)">`;
- h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:(v.cat==="bebidas"?drinkClass(p.name):""))).join("")}</div>`;return h
+ h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:(v.cat==="bebidas"?drinkClass(p.name):v.cat==="cafes"?coffeeClass(p.name):""))).join("")}</div>`;return h
 }
 function filterWine(q,remember=true){if(remember&&currentView().type==="products")currentView().wineSearch=q;q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
 function selectProduct(n,cat,i){
  const p=products[cat][i];
+ if(cat==="cafes" && p.children)return push({type:"children",table:n,title:p.name,items:p.children,coffee:true});
  if(cat==="cafes")return askCoffee(n,p);
  if(p.children)return push({type:"children",table:n,title:p.name,items:p.children});
  if(p.childrenGroups)return push({type:"groups",table:n,title:p.name,groups:p.childrenGroups});
  addProduct(n,p)
 }
-function renderChildren(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentChild(${i})`,drinkClass(v.title))).join("")}</div>`}
-function addCurrentChild(i){const v=currentView(),x=v.items[i];if(x!=null)addNamed(v.table,`${v.title} · ${x}`)}
+function renderChildren(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentChild(${i})`,v.coffee?coffeeClass(v.title):drinkClass(v.title))).join("")}</div>`}
+function addCurrentChild(i){const v=currentView(),x=v.items[i];if(x==null)return; if(v.coffee && v.title.startsWith("Carajillo"))return coffeeIceModal(v.table,`${v.title} · ${x}`,"");addNamed(v.table,`${v.title} · ${x}`)}
 function renderGroups(v){return titleBar(v.title)+`<div class="product-grid">${v.groups.map((g,i)=>productBtn(g.direct||g.name,`openCurrentGroup(${i})`)).join("")}</div>`}
 function openCurrentGroup(i){const v=currentView(),g=v.groups[i];if(!g)return;if(g.direct)return addNamed(v.table,g.direct);push({type:"groupitems",table:v.table,title:g.name,items:g.items||[]})}
 function renderGroupItems(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentGroupItem(${i})`)).join("")}</div>`}
