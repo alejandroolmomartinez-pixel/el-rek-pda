@@ -534,7 +534,17 @@ window.APP_DATA = {
       },
       {
         "name": "Bola de helado",
-        "children": ["Vainilla", "Chocolate", "Leche merengada", "Turrón", "Limón", "Mora", "Mango", "Frutos del bosque", "Mandarina"]
+        "children": [
+          "Vainilla",
+          "Chocolate",
+          "Leche merengada",
+          "Turrón",
+          "Limón",
+          "Mora",
+          "Mango",
+          "Frutos del bosque",
+          "Mandarina"
+        ]
       },
       {
         "name": "Torrija de Horchata"
@@ -924,8 +934,93 @@ window.APP_DATA = {
         "name": "Entrecot"
       }
     ],
-    "rosados": [],
-    "dulces": [],
-    "cavas": []
+    "rosados": [
+      {
+        "name": "Huella de Merlot Rosé"
+      },
+      {
+        "name": "Bobal Rosa"
+      },
+      {
+        "name": "Impromptu Rosé Pinot Noir"
+      },
+      {
+        "name": "Hoya de los Lobos Rosado"
+      },
+      {
+        "name": "Piérola Rosado"
+      }
+    ],
+    "dulces": [
+      {
+        "name": "Oro de Alejandría"
+      },
+      {
+        "name": "Pedro Ximénez Néctar"
+      },
+      {
+        "name": "Alvear PX 1927"
+      },
+      {
+        "name": "Tokaji Aszú"
+      }
+    ],
+    "cavas": [
+      {
+        "name": "Louis Perdrier Brut"
+      },
+      {
+        "name": "Louis Perdrier Rosé Excellence"
+      },
+      {
+        "name": "Bobal Brut Blanc de Noirs"
+      },
+      {
+        "name": "Perelada Brut Reserva"
+      },
+      {
+        "name": "Atance Brut Nature"
+      },
+      {
+        "name": "P. Tharsys Millesime Blanco Brut Reserva"
+      },
+      {
+        "name": "Juve Camps Reserva de Familia"
+      },
+      {
+        "name": "Tantum Ergo Brut Nature"
+      },
+      {
+        "name": "Pago de Tharsys Millesime Rosé Brut Reserva"
+      },
+      {
+        "name": "Tantum Ergo Rosé"
+      },
+      {
+        "name": "Moët & Chandon Imperial"
+      },
+      {
+        "name": "Taittinger Brut Reserva"
+      },
+      {
+        "name": "Veuve Clicquot Brut"
+      },
+      {
+        "name": "Veuve Clicquot Brut Rosé"
+      }
+    ]
+  },
+  "glassRegions": {
+    "Copa de tinto": {
+      "FyA 8 Tempranillo": "Rioja",
+      "Nebla Garnacha": "Utiel-Requena",
+      "Traslascuestas (Roble)": "Ribera del Duero"
+    },
+    "Copa de blanco": {
+      "Cyatho": "Rueda",
+      "Nebla Chardonnay sobre lías": "Utiel-Requena",
+      "FyA Bs Semidulce": "Rioja",
+      "Don Pedro de Soutomaior": "Rías Baixas"
+    }
   }
 };
