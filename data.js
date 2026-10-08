@@ -533,7 +533,8 @@ window.APP_DATA = {
         "name": "Tarta de Queso"
       },
       {
-        "name": "Bola de helado"
+        "name": "Bola de helado",
+        "children": ["Vainilla", "Chocolate", "Leche merengada", "Turrón", "Limón", "Mora", "Mango", "Frutos del bosque", "Mandarina"]
       },
       {
         "name": "Torrija de Horchata"
