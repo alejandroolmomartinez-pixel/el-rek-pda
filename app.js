@@ -230,11 +230,11 @@ function selectProduct(n,cat,i){
  if(p.childrenGroups)return push({type:"groups",table:n,title:p.name,groups:p.childrenGroups});
  addProduct(n,p)
 }
-function renderChildren(v){const regions=window.APP_DATA.glassRegions?.[v.title];return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(regions?`${x} · ${regions[x]||""}`:`${v.title} · ${x}`,`addCurrentChild(${i})`,v.coffee?coffeeClass(v.title):drinkClass(v.title))).join("")}</div>`}
+function renderChildren(v){const regions=window.APP_DATA.glassRegions?.[v.title];return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(regions?`${x} · ${regions[x]||""}`:x,`addCurrentChild(${i})`,v.coffee?coffeeClass(v.title):drinkClass(v.title))).join("")}</div>`}
 function addCurrentChild(i){const v=currentView(),x=v.items[i];if(x==null)return; addNamed(v.table,`${v.title} · ${x}`)}
 function renderGroups(v){return titleBar(v.title)+`<div class="product-grid">${v.groups.map((g,i)=>productBtn(g.direct||g.name,`openCurrentGroup(${i})`)).join("")}</div>`}
 function openCurrentGroup(i){const v=currentView(),g=v.groups[i];if(!g)return;if(g.direct)return addNamed(v.table,g.direct);push({type:"groupitems",table:v.table,title:g.name,items:g.items||[]})}
-function renderGroupItems(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentGroupItem(${i})`)).join("")}</div>`}
+function renderGroupItems(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(x,`addCurrentGroupItem(${i})`)).join("")}</div>`}
 function addCurrentGroupItem(i){const v=currentView(),x=v.items[i];if(x!=null)addNamed(v.table,`${v.title} · ${x}`)}
 function addProduct(n,p){
  if(p.rice)return askRice(n,p);

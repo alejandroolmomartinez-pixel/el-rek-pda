@@ -95,7 +95,8 @@ window.APP_DATA = {
           "Cruzcampo Gran Reserva",
           "Cruzcampo Gran Reserva 0’0",
           "Heineken",
-          "Heineken 0’0"
+          "Heineken 0’0",
+          "Sin gluten"
         ]
       },
       {
@@ -305,6 +306,9 @@ window.APP_DATA = {
     "frios": [
       {
         "name": "Pan"
+      },
+      {
+        "name": "Pan sin gluten"
       },
       {
         "name": "Mortero"
