@@ -119,7 +119,7 @@ window.APP_DATA = {
         ]
       },
       {
-        "name": "Copa vino blanco",
+        "name": "Copa de blanco",
         "children": [
           "Cyatho",
           "Nebla Chardonnay sobre lías",
@@ -128,7 +128,10 @@ window.APP_DATA = {
         ]
       },
       {
-        "name": "Copa vino rosado"
+        "name": "Copa de rosado"
+      },
+      {
+        "name": "Copa cava"
       },
       {
         "name": "Sangría",

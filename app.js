@@ -204,11 +204,13 @@ function globalSearch(n,q,remember=true){
  box.innerHTML=`<div class="product-grid">${searchCache.map((p,i)=>productBtn(p.name,`addSearchIndex(${n},${i})`,"",p.custom?"custom":"normal")).join("")}</div>`
 }
 function addSearchIndex(n,i){const p=searchCache[i];if(!p)return;if(p.leafName)addNamed(n,p.leafName);else addProduct(n,p)}
+const DRINK_CLASSES={"Agua":"drink-0","Agua con gas":"drink-1","Tercios":"drink-2","Caña":"drink-3","Doble":"drink-4","Doble de Radler":"drink-5","Pinta":"drink-6","Copa de tinto":"drink-7","Copa de blanco":"drink-8","Copa de rosado":"drink-9","Copa cava":"drink-10","Sangría":"drink-11","Tinto de verano":"drink-12","Sangría de cava":"drink-13","Martini rojo":"drink-14","Martini blanco":"drink-15","Nestea":"drink-16","Nestea de maracuyá":"drink-17","Fanta de limón":"drink-18","Fanta de naranja":"drink-19","Aquarius limón":"drink-20","Aquarius naranja":"drink-21","Coca-Cola":"drink-22","Coca-Cola 0":"drink-23","Coca-Cola 00":"drink-24","Sprite":"drink-25","Tónica":"drink-26","Bitter Kas":"drink-27","Gaseosa":"drink-28","Zumo de piña":"drink-29","Zumo de melocotón":"drink-30","Izaguirre/Vermut":"drink-31","Izaguirre rojo":"drink-32","Agua de Valencia":"drink-33"};
+function drinkClass(name){if(DRINK_CLASSES[name])return DRINK_CLASSES[name];if(name.startsWith("Tercios · "))return DRINK_CLASSES["Tercios"];return ""}
 function renderProducts(v){
  const cat=categories.find(c=>c.id===v.cat),list=products[v.cat]||[];
  let h=titleBar(cat.name);
  if(cat.wine)h+=`<input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value)">`;
- h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:"")).join("")}</div>`;return h
+ h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:(v.cat==="bebidas"?drinkClass(p.name):""))).join("")}</div>`;return h
 }
 function filterWine(q,remember=true){if(remember&&currentView().type==="products")currentView().wineSearch=q;q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
 function selectProduct(n,cat,i){
@@ -218,7 +220,7 @@ function selectProduct(n,cat,i){
  if(p.childrenGroups)return push({type:"groups",table:n,title:p.name,groups:p.childrenGroups});
  addProduct(n,p)
 }
-function renderChildren(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentChild(${i})`)).join("")}</div>`}
+function renderChildren(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentChild(${i})`,drinkClass(v.title))).join("")}</div>`}
 function addCurrentChild(i){const v=currentView(),x=v.items[i];if(x!=null)addNamed(v.table,`${v.title} · ${x}`)}
 function renderGroups(v){return titleBar(v.title)+`<div class="product-grid">${v.groups.map((g,i)=>productBtn(g.direct||g.name,`openCurrentGroup(${i})`)).join("")}</div>`}
 function openCurrentGroup(i){const v=currentView(),g=v.groups[i];if(!g)return;if(g.direct)return addNamed(v.table,g.direct);push({type:"groupitems",table:v.table,title:g.name,items:g.items||[]})}
