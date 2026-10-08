@@ -1,0 +1,72 @@
+
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;color:#0b0b0b;background:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body,#app{margin:0;min-height:100%;background:#fff}
+body{overscroll-behavior:none}
+.shell{max-width:760px;margin:auto;min-height:100vh;padding:env(safe-area-inset-top) 14px calc(22px + env(safe-area-inset-bottom))}
+.topbar{height:58px;display:flex;align-items:center;gap:10px;position:sticky;top:0;background:rgba(255,255,255,.96);z-index:4;border-bottom:1px solid #eee}
+.topbar h1{font-size:22px;margin:0;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iconbtn{border:0;background:#f1f1f3;border-radius:12px;min-width:42px;height:42px;font-size:22px;font-weight:800}
+.spacer{width:42px}
+.table-grid,.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 0 100px}
+.table{aspect-ratio:1/1;border:0;border-radius:16px;background:#0b0b0b;color:#fff;font-weight:800;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 2px 8px #0002}
+.table.paid{background:#16823a}.table .num{font-size:34px;line-height:1}.table .diners{font-size:16px;margin-top:8px}.table .timer{font-size:13px;margin-top:7px}
+.bottom-action{position:fixed;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom));max-width:732px;margin:auto;border:0;border-radius:16px;background:#0b0b0b;color:#fff;padding:17px;font-size:18px;font-weight:900;z-index:5}
+.bottom-action.paid{background:#16823a}
+.orders{padding:8px 0 100px}.order{display:grid;grid-template-columns:1fr 46px;gap:8px;align-items:stretch;border:1px solid #ddd;border-radius:14px;margin:9px 0;background:#fff;overflow:hidden}.order.served{background:#dff5e4}.order-main{padding:13px 14px;min-width:0}.order-title{font-weight:800;font-size:17px}.order-note{margin-top:5px;padding-left:14px;color:#555;font-size:14px}.order-meta{font-size:13px;color:#666;margin-top:6px}.serve{border:0;border-left:1px solid #ddd;background:transparent;font-size:22px;font-weight:900}.served .serve{background:#bfeac9}
+.product-grid{grid-template-columns:repeat(2,1fr);padding-bottom:20px}.product{min-height:92px;border:0;border-radius:15px;background:#111;color:#fff;font-weight:800;font-size:16px;padding:12px}.product.wine{background:#33121a}.search{width:100%;margin:12px 0 4px;border:1px solid #ccc;border-radius:13px;padding:13px 14px;font-size:17px;background:#f7f7f8}
+.section-title{font-size:13px;color:#777;text-transform:uppercase;font-weight:800;letter-spacing:.06em;margin:16px 2px 6px}
+.empty{text-align:center;color:#777;padding:55px 20px}.hint{color:#777;font-size:13px;margin:8px 2px}
+.modal-bg{position:fixed;inset:0;background:#0007;z-index:20;display:flex;align-items:flex-end;justify-content:center}.modal{width:min(100%,760px);background:#fff;border-radius:22px 22px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom));max-height:85vh;overflow:auto}.modal h2{margin:0 0 14px;font-size:22px}.modal input,.modal textarea{width:100%;font:inherit;border:1px solid #bbb;border-radius:12px;padding:13px;margin:5px 0 12px}.modal textarea{min-height:90px;resize:vertical}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.actions.one{grid-template-columns:1fr}.btn{border:0;border-radius:13px;padding:14px;font-size:16px;font-weight:850;background:#eee}.btn.primary{background:#111;color:#fff}.btn.green{background:#16823a;color:#fff}.btn.red{background:#c62828;color:#fff}.btn.orange{background:#b25b00;color:#fff}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.choice{border:0;border-radius:14px;background:#111;color:#fff;padding:18px 10px;font-size:17px;font-weight:900}
+.move-banner{background:#fff5d9;border:1px solid #e7c466;padding:12px;border-radius:12px;margin-top:10px;font-weight:700}
+.alert{position:fixed;inset:0;background:#000d;color:#fff;z-index:50;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px}.alert-card h2{font-size:34px;margin:0 0 8px}.alert-card p{font-size:20px}.alert-card button{border:0;border-radius:15px;padding:16px 30px;font-size:18px;font-weight:900}
+@media(min-width:600px){.table-grid{grid-template-columns:repeat(5,1fr)}.product-grid{grid-template-columns:repeat(3,1fr)}}
+
+.added-toast{position:fixed;top:calc(12px + env(safe-area-inset-top));left:50%;transform:translate(-50%,-18px);z-index:100;background:#111;color:#fff;padding:11px 16px;border-radius:999px;font-size:15px;font-weight:800;box-shadow:0 5px 18px #0004;max-width:calc(100% - 28px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;pointer-events:none;transition:opacity .16s ease,transform .16s ease}.added-toast.show{opacity:1;transform:translate(-50%,0)}
+.product.unavailable{background:#b3261e!important;color:#fff!important;border-color:#b3261e!important;opacity:1}
+.product .soldout{display:block;font-size:11px;font-weight:900;margin-top:7px;letter-spacing:.04em}
+.product.add-custom{font-size:42px;font-weight:500}
+.bottom-action.secondary{margin-top:10px;background:#fff;color:#111;border:2px solid #111}
+/* v6.1: keep both main-screen actions visible */
+.bottom-action.secondary{bottom:calc(82px + env(safe-area-inset-bottom));margin-top:0}
+.table-grid{padding-bottom:170px}
+
+/* v6.2: prevent iOS text selection/callout on long-press interactive controls */
+.product,.table,.iconbtn,.bottom-action,.choice,.btn,.serve{
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout:none;
+}
+.product *,.table *,.iconbtn *,.bottom-action *,.choice *,.btn *,.serve *{
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout:none;
+}
+
+/* v7: march state and table action */
+.orders{padding-bottom:170px}
+.order.marched{background:#fff0c2}
+.marched .serve{background:#f4d889}
+.bottom-action.march-action{bottom:calc(82px + env(safe-area-inset-bottom));background:#fff;color:#111;border:2px solid #111}
+
+
+/* v9: at-a-glance table status. Rice/fideua/special timer items are excluded in JS. */
+.table.neutral{background:#0b0b0b;color:#fff}
+.table.needs-march{background:#b3261e;color:#fff}
+.table.needs-serve{background:#c77b00;color:#fff}
+.table.all-served{background:#16823a;color:#fff}
+
+/* v9: table-scoped bottom navigation */
+.table-nav{position:fixed;left:0;right:0;bottom:0;height:calc(66px + env(safe-area-inset-bottom));padding:6px max(14px,calc((100vw - 760px)/2 + 14px)) env(safe-area-inset-bottom);background:rgba(255,255,255,.97);border-top:1px solid #ddd;z-index:12;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.table-nav-btn{border:0;background:transparent;border-radius:14px;display:flex;align-items:center;justify-content:center;min-height:54px;color:#777;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.table-nav-btn.active{background:#ededf0;color:#111}
+.table-nav-btn svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.table-nav-btn:first-child svg{fill:currentColor;stroke:currentColor}
+/* leave room for the nav throughout a table context */
+.shell:has(.table-nav){padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+.shell:has(.table-nav) .product-grid{padding-bottom:90px}
+.shell:has(.table-nav) .orders{padding-bottom:245px}
+/* MARCHADO and PAGAR sit above the table navigation */
+.shell:has(.table-nav) .bottom-action:not(.secondary):not(.march-action){bottom:calc(78px + env(safe-area-inset-bottom))}
+.shell:has(.table-nav) .bottom-action.march-action{bottom:calc(148px + env(safe-area-inset-bottom))}
