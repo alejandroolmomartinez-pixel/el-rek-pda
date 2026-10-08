@@ -127,7 +127,7 @@ function renderTable(n){
   h+=`<div class="order ${o.served?"served":(o.marched?"marched":"")}">
    <div class="order-main" onclick="orderActions(${n},'${o.id}')">
     <div class="order-title">${esc(o.name)} ${o.qty>1?`x${o.qty}`:""}</div>
-    ${o.note?`<div class="order-note">${esc(o.note)}</div>`:""}
+    ${(o.note||(o.noteTags||[]).length)?`<div class="order-note">${esc([...(o.noteTags||[]),o.note].filter(Boolean).join(" · "))}</div>`:""}
     ${o.rice?`<div class="order-meta">${o.reserved?"ENCARGADO":"NO ENCARGADO"} · ${o.qty} raciones ${o.timerEnd&&!o.timerAck?`· ⏱ <span data-timer="${o.id}">${fmt(o.timerEnd-Date.now())}</span>`:(!o.marched?`· SIN MARCHAR`:"")}</div>`:""}
    </div><button class="serve" oncontextmenu="event.preventDefault();event.stopPropagation();openServeAdmin(${n},'${o.id}')" onpointerdown="event.stopPropagation();serveHoldStart(${n},'${o.id}')" onpointerup="serveHoldEnd()" onpointercancel="serveHoldEnd()" onpointerleave="serveHoldEnd()" onclick="event.stopPropagation();if(serveHoldTriggered){serveHoldTriggered=false;return}toggleServed(${n},'${o.id}')">${o.served?"✓":"□"}</button></div>`
  });
@@ -159,7 +159,15 @@ function orderActions(n,id){
  body+=`<button class="btn red" onclick="deleteOrder(${n},'${id}')">Eliminar</button></div>`;
  modal(o.name,body,[])
 }
-function editNote(n,id){const o=table(n).orders.find(x=>x.id===id);modal("Nota",`<textarea id="note" placeholder="Escribe la nota...">${esc(o.note||"")}</textarea>`,[{label:"Cancelar"},{label:"Guardar",primary:true,action:()=>{o.note=document.querySelector("#note").value.trim();save();closeModal();render()}}])}
+const COFFEE_NOTE_OPTIONS=["Corto","Largo","Con hielo","Sacarina","Del tiempo","Manchado de leche","Muy caliente"];
+function isCoffeeOrder(o){return /^(Solo|Cortado|Bombón|Café con leche|Carajillo|Americano|Capuchino|Cremaet|Infusiones)(?:$| | ·)/i.test(o.name)}
+function toggleCoffeeNote(i){const b=document.querySelector(`#coffee-note-${i}`);if(!b)return;const selected=b.getAttribute("aria-pressed")==="true";b.setAttribute("aria-pressed",String(!selected));b.classList.toggle("selected",!selected)}
+function editNote(n,id){
+ const o=table(n).orders.find(x=>x.id===id);if(!o)return;
+ const coffee=isCoffeeOrder(o);
+ const chips=coffee?`<div class="coffee-note-grid">${COFFEE_NOTE_OPTIONS.map((tag,i)=>`<button type="button" id="coffee-note-${i}" class="coffee-note-chip ${(o.noteTags||[]).includes(tag)?"selected":""}" aria-pressed="${(o.noteTags||[]).includes(tag)}" onclick="toggleCoffeeNote(${i})">${tag}</button>`).join("")}</div>`:"";
+ modal("Nota",`<textarea id="note" placeholder="Escribe la nota...">${esc(o.note||"")}</textarea>${chips}`,[{label:"Cancelar"},{label:"Guardar",primary:true,action:()=>{o.note=document.querySelector("#note").value.trim();if(coffee)o.noteTags=COFFEE_NOTE_OPTIONS.filter((tag,i)=>document.querySelector(`#coffee-note-${i}`)?.getAttribute("aria-pressed")==="true");save();closeModal();render()}}])
+}
 function editQty(n,id){const o=table(n).orders.find(x=>x.id===id);modal("Cantidad",`<input id="qty" type="number" inputmode="numeric" min="1" value="${o.qty||1}">`,[{label:"Cancelar"},{label:"Guardar",primary:true,action:()=>{let q=parseInt(document.querySelector("#qty").value);if(q>0){o.qty=q;save();closeModal();render()}}}])}
 function editRice(n,id){
  const o=table(n).orders.find(x=>x.id===id);
@@ -217,13 +225,13 @@ function filterWine(q,remember=true){if(remember&&currentView().type==="products
 function selectProduct(n,cat,i){
  const p=products[cat][i];
  if(cat==="cafes" && p.children)return push({type:"children",table:n,title:p.name,items:p.children,coffee:true});
- if(cat==="cafes")return askCoffee(n,p);
+ if(cat==="cafes")return addNamed(n,p.name);
  if(p.children)return push({type:"children",table:n,title:p.name,items:p.children});
  if(p.childrenGroups)return push({type:"groups",table:n,title:p.name,groups:p.childrenGroups});
  addProduct(n,p)
 }
 function renderChildren(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentChild(${i})`,v.coffee?coffeeClass(v.title):drinkClass(v.title))).join("")}</div>`}
-function addCurrentChild(i){const v=currentView(),x=v.items[i];if(x==null)return; if(v.coffee && v.title.startsWith("Carajillo"))return coffeeIceModal(v.table,`${v.title} · ${x}`,"");addNamed(v.table,`${v.title} · ${x}`)}
+function addCurrentChild(i){const v=currentView(),x=v.items[i];if(x==null)return; addNamed(v.table,`${v.title} · ${x}`)}
 function renderGroups(v){return titleBar(v.title)+`<div class="product-grid">${v.groups.map((g,i)=>productBtn(g.direct||g.name,`openCurrentGroup(${i})`)).join("")}</div>`}
 function openCurrentGroup(i){const v=currentView(),g=v.groups[i];if(!g)return;if(g.direct)return addNamed(v.table,g.direct);push({type:"groupitems",table:v.table,title:g.name,items:g.items||[]})}
 function renderGroupItems(v){return titleBar(v.title)+`<div class="product-grid">${v.items.map((x,i)=>productBtn(`${v.title} · ${x}`,`addCurrentGroupItem(${i})`)).join("")}</div>`}
@@ -264,17 +272,6 @@ function riceStep2(reserved){
  const {n,p}=window.pendingRice;window.pendingRice={n,p,reserved};
  modal(p.name,`<p>${reserved?"ENCARGADO":"NO ENCARGADO"}</p><label>Número de raciones</label><input id="qty" type="number" inputmode="numeric" min="1" autofocus>`,[{label:"Cancelar"},{label:"Añadir",primary:true,action:()=>{let q=parseInt(document.querySelector("#qty").value);if(q>0){table(n).orders.push({id:uid(),name:p.name,qty:q,note:"",served:false,marched:false,rice:true,reserved,reservedMinutes:p.reservedMinutes,notReservedMinutes:p.notReservedMinutes,timerEnd:null,timerAck:false});save();closeModal();render();showAddedToast(p.name,q)}}}])
 }
-function askCoffee(n,p){
- const solo=p.name==="Solo"||p.name==="Solo descaf";
- if(solo){window.pendingCoffee={n,p};modal(p.name,`<p>¿Largo o corto?</p><div class="choice-grid"><button class="choice" onclick="coffeeIceStep('Largo')">LARGO</button><button class="choice" onclick="coffeeIceStep('Corto')">CORTO</button></div>`,[]);return}
- coffeeIceModal(n,p.name,"")
-}
-function coffeeIceStep(length){const {n,p}=window.pendingCoffee;coffeeIceModal(n,p.name,length)}
-function coffeeIceModal(n,name,length){
- window.pendingCoffee={n,name,length};
- modal(name,`${length?`<p><b>${length}</b></p>`:""}<p>¿Con o sin hielo?</p><div class="choice-grid"><button class="choice" onclick="finishCoffee(true)">CON HIELO</button><button class="choice" onclick="finishCoffee(false)">SIN HIELO</button></div>`,[])
-}
-function finishCoffee(ice){const c=window.pendingCoffee;let name=c.name;if(c.length)name+=` · ${c.length}`;name+=ice?" · Con hielo":" · Sin hielo";closeModal();addNamed(c.n,name)}
 function modal(title,body,buttons){
  document.querySelector("#modal-root").innerHTML=`<div class="modal-bg" onclick="if(event.target===this)closeModal()"><div class="modal"><h2>${esc(title)}</h2>${body}${buttons.length?`<div class="actions ${buttons.length===1?"one":""}">${buttons.map((b,i)=>`<button class="btn ${b.primary?"primary":""} ${b.danger?"red":""}" id="mb${i}">${esc(b.label)}</button>`).join("")}</div>`:""}</div></div>`;
  buttons.forEach((b,i)=>document.querySelector("#mb"+i).onclick=b.action||closeModal)

@@ -86,3 +86,8 @@ body{overscroll-behavior:none}
 .product.coffee-regular{background:#111;color:#fff}
 .product.coffee-decaf{background:#533523;color:#fff}
 .product.coffee-infusion{background:#258044;color:#fff}
+
+/* Opciones rápidas de notas para cafés */
+.coffee-note-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:2px 0 14px}
+.coffee-note-chip{border:2px solid #bbb;background:#f6f6f6;color:#111;border-radius:12px;padding:13px 7px;font-size:15px;font-weight:750;min-height:48px}
+.coffee-note-chip.selected{background:#533523;border-color:#533523;color:white}
