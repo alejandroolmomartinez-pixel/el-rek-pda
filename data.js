@@ -87,15 +87,6 @@ window.APP_DATA = {
         "name": "Agua con gas"
       },
       {
-        "name": "Pinta"
-      },
-      {
-        "name": "Doble"
-      },
-      {
-        "name": "Caña"
-      },
-      {
         "name": "Tercios",
         "children": [
           "Águila sin filtrar",
@@ -108,31 +99,16 @@ window.APP_DATA = {
         ]
       },
       {
-        "name": "Coca-Cola"
+        "name": "Caña"
       },
       {
-        "name": "Coca-Cola 0"
+        "name": "Doble"
       },
       {
-        "name": "Coca-Cola 00"
+        "name": "Doble de Radler"
       },
       {
-        "name": "Nestea"
-      },
-      {
-        "name": "Aquarius limón"
-      },
-      {
-        "name": "Aquarius naranja"
-      },
-      {
-        "name": "Fanta de naranja"
-      },
-      {
-        "name": "Fanta de limón"
-      },
-      {
-        "name": "Sprite"
+        "name": "Pinta"
       },
       {
         "name": "Copa de tinto",
@@ -155,17 +131,14 @@ window.APP_DATA = {
         "name": "Copa vino rosado"
       },
       {
-        "name": "Copa cava"
-      },
-      {
-        "name": "Tinto de verano",
+        "name": "Sangría",
         "children": [
           "Copa",
           "Litro"
         ]
       },
       {
-        "name": "Sangría",
+        "name": "Tinto de verano",
         "children": [
           "Copa",
           "Litro"
@@ -179,17 +152,68 @@ window.APP_DATA = {
         ]
       },
       {
+        "name": "Martini rojo"
+      },
+      {
+        "name": "Martini blanco"
+      },
+      {
+        "name": "Nestea"
+      },
+      {
+        "name": "Nestea de maracuyá"
+      },
+      {
+        "name": "Fanta de limón"
+      },
+      {
+        "name": "Fanta de naranja"
+      },
+      {
+        "name": "Aquarius limón"
+      },
+      {
+        "name": "Aquarius naranja"
+      },
+      {
+        "name": "Coca-Cola"
+      },
+      {
+        "name": "Coca-Cola 0"
+      },
+      {
+        "name": "Coca-Cola 00"
+      },
+      {
+        "name": "Sprite"
+      },
+      {
+        "name": "Tónica"
+      },
+      {
+        "name": "Bitter Kas"
+      },
+      {
+        "name": "Gaseosa"
+      },
+      {
+        "name": "Zumo de piña"
+      },
+      {
+        "name": "Zumo de melocotón"
+      },
+      {
+        "name": "Izaguirre/Vermut"
+      },
+      {
+        "name": "Izaguirre rojo"
+      },
+      {
         "name": "Agua de Valencia",
         "children": [
           "Copa",
           "Litro"
         ]
-      },
-      {
-        "name": "Aperol"
-      },
-      {
-        "name": "Vermut"
       }
     ],
     "cafes": [

@@ -70,3 +70,9 @@ body{overscroll-behavior:none}
 /* MARCHADO and PAGAR sit above the table navigation */
 .shell:has(.table-nav) .bottom-action:not(.secondary):not(.march-action){bottom:calc(78px + env(safe-area-inset-bottom))}
 .shell:has(.table-nav) .bottom-action.march-action{bottom:calc(148px + env(safe-area-inset-bottom))}
+
+/* v9.5 wine category palette */
+.product.wine-blancos{background:#f0dfad;color:#3a2c0b}
+.product.wine-rosados{background:#d9879d;color:#30121c}
+.product.wine-dulces{background:#b77b19;color:#fff}
+.product.wine-cavas{background:#9bd8df;color:#15343a}

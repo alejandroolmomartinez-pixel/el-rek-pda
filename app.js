@@ -176,7 +176,7 @@ function setRiceEditChoice(v){document.querySelector("#ricechoice").value=v?"1":
 function deleteOrder(n,id){let t=table(n);t.orders=t.orders.filter(x=>x.id!==id);save();closeModal();render()}
 function payTable(n){modal(`¿Seguro que quieres pagar y finalizar la Mesa ${n}?`,`<p>La mesa quedará pagada y se eliminarán todos sus productos, notas, estados y temporizadores.</p>`,[{label:"Cancelar"},{label:"PAGAR Y FINALIZAR",danger:true,action:()=>{state.tables[n-1]=freshTable(n);save();closeModal();nav=[{type:"tables"}];render()}}])}
 function openCategories(n){push({type:"categories",table:n})}
-function renderCategories(n){let h=titleBar("Añadir productos");h+=`<input class="search" id="globalSearch" placeholder="Buscar producto…" oninput="globalSearch(${n},this.value)">`;h+=`<div id="searchResults"></div><div class="product-grid">${categories.map(c=>`<button class="product ${c.wine?"wine":""}" onclick="push({type:'products',table:${n},cat:'${c.id}'})">${esc(c.name)}</button>`).join("")}<button class="product" onclick="push({type:'outside',table:${n}})">FUERA DE CARTA</button></div>`;return h}
+function renderCategories(n){let h=titleBar("Añadir productos");h+=`<input class="search" id="globalSearch" placeholder="Buscar producto…" oninput="globalSearch(${n},this.value)">`;h+=`<div id="searchResults"></div><div class="product-grid">${categories.map(c=>`<button class="product ${c.wine?"wine wine-"+c.id:""}" onclick="push({type:'products',table:${n},cat:'${c.id}'})">${esc(c.name)}</button>`).join("")}<button class="product" onclick="push({type:'outside',table:${n}})">FUERA DE CARTA</button></div>`;return h}
 function renderOutside(n){let h=titleBar("Fuera de carta");h+=`<div class="product-grid"><button class="product add-custom" onclick="addOutsidePrompt(${n})">＋</button>${state.outOfMenu.map(name=>productBtn(name,`addNamed(${n},'${jsq(name)}')`,"","custom")).join("")}</div><div class="hint">Mantén pulsado un producto para marcarlo como agotado o eliminarlo.</div>`;return h}
 function addOutsidePrompt(n){modal("Añadir fuera de carta",`<label>Nombre del producto</label><input id="outsideName" type="text" autocomplete="off" autofocus>`,[{label:"Cancelar"},{label:"AÑADIR",primary:true,action:()=>{let name=document.querySelector("#outsideName").value.trim();if(!name)return;if(!state.outOfMenu.some(x=>normalizeSearch(x)===normalizeSearch(name)))state.outOfMenu.push(name);save();closeModal();render()}}])}
 let searchCache=[];
@@ -208,7 +208,7 @@ function renderProducts(v){
  const cat=categories.find(c=>c.id===v.cat),list=products[v.cat]||[];
  let h=titleBar(cat.name);
  if(cat.wine)h+=`<input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value)">`;
- h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine":"")).join("")}</div>`;return h
+ h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:"")).join("")}</div>`;return h
 }
 function filterWine(q,remember=true){if(remember&&currentView().type==="products")currentView().wineSearch=q;q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
 function selectProduct(n,cat,i){
