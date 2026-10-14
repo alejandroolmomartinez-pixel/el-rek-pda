@@ -396,75 +396,75 @@ window.APP_DATA = {
         "name": "Pollo y conejo",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Magret de pato y foie",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Verduras",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Paella pollo solo",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Secreto ibérico",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       }
     ],
     "paellas-mar": [
       {
-        "name": "P de marisco",
+        "name": "Paella marisco",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Arroz negro",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Señoret",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Paella bogavante",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Plancton y gambas",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Paella rojos",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       },
       {
         "name": "Paella marisco especial",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 55
+        "notReservedMinutes": 30
       }
     ],
     "melosos": [
@@ -472,25 +472,25 @@ window.APP_DATA = {
         "name": "Meloso de Magret de Pato y Foie",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "Meloso con Bogavante Azul",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "Meloso de Marisco",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "Meloso de Rojos",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       }
     ],
     "fideuas": [
@@ -498,31 +498,31 @@ window.APP_DATA = {
         "name": "FIFI de Marisco",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "FIFI de Plancton marino y Gamba rayada",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "FIFI de Marisco Especial",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "FIFI de Magret de Pato y Foie",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "FIFI de Verduras de temporada",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       }
     ],
     "especiales": [
@@ -530,13 +530,13 @@ window.APP_DATA = {
         "name": "Espardenyà",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       },
       {
         "name": "Arroz amb Fesols i Naps",
         "rice": true,
         "reservedMinutes": 25,
-        "notReservedMinutes": 40
+        "notReservedMinutes": 30
       }
     ],
     "ninos": [
