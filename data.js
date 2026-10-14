@@ -311,10 +311,7 @@ window.APP_DATA = {
         "name": "Pan sin gluten"
       },
       {
-        "name": "Mortero"
-      },
-      {
-        "name": "Tomate"
+        "name": "Tomate con ventresca"
       },
       {
         "name": "Esgarraet"
@@ -323,15 +320,30 @@ window.APP_DATA = {
         "name": "Ensalada"
       },
       {
-        "name": "Tabule"
+        "name": "Tabulé"
+      },
+      {
+        "name": "Tartar de salmón"
+      },
+      {
+        "name": "Morteros"
       },
       {
         "name": "Ensaladilla"
+      },
+      {
+        "name": "Ostra"
+      },
+      {
+        "name": "Boquerones"
+      },
+      {
+        "name": "Cecina Wagyu"
       }
     ],
     "calientes": [
       {
-        "name": "Patatas Bravas"
+        "name": "Patatas bravas"
       },
       {
         "name": "All i pebre"
@@ -340,66 +352,72 @@ window.APP_DATA = {
         "name": "Anguila frita"
       },
       {
-        "name": "Pulpo crujiente"
-      },
-      {
         "name": "Calamares"
-      },
-      {
-        "name": "Titaina"
       },
       {
         "name": "Sepia"
       },
       {
-        "name": "Tartar de salmón"
+        "name": "Tosta de cococha"
       },
       {
-        "name": "Boquerones fritos"
+        "name": "Croqueta de jamón"
       },
       {
-        "name": "Tellinas"
-      },
-      {
-        "name": "Tosta de Cococha"
+        "name": "Pulpo"
       },
       {
         "name": "Gyozas de pato"
       },
       {
-        "name": "Croqueta de jamón ibérico"
-      },
-      {
-        "name": "Flautín de algas y gambas"
-      },
-      {
         "name": "Pan brioche de panceta"
       },
       {
-        "name": "Gamba fresca"
+        "name": "Pescaditos"
+      },
+      {
+        "name": "Gamba"
+      },
+      {
+        "name": "Tellinas"
+      },
+      {
+        "name": "Flautín de gambas"
+      },
+      {
+        "name": "Titaina"
+      },
+      {
+        "name": "Croqueta de vaca"
       }
     ],
     "paellas-carne": [
       {
-        "name": "Paella Valenciana de Pollo y Conejo",
+        "name": "Pollo y conejo",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Paella de Magret de Pato y Foie",
+        "name": "Magret de pato y foie",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Paella de Secreto Ibérico",
+        "name": "Verduras",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Paella de Verduras de temporada",
+        "name": "Paella pollo solo",
+        "rice": true,
+        "reservedMinutes": 25,
+        "notReservedMinutes": 55
+      },
+      {
+        "name": "Secreto ibérico",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
@@ -407,43 +425,43 @@ window.APP_DATA = {
     ],
     "paellas-mar": [
       {
-        "name": "Paella de Marisco",
+        "name": "P de marisco",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Arroz Negro",
+        "name": "Arroz negro",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Arroz del Senyoret",
+        "name": "Señoret",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Paella de Marisco Especial",
+        "name": "Paella bogavante",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Paella de Bogavante Azul",
+        "name": "Plancton y gambas",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Paella de Plancton marino y Gamba rayada",
+        "name": "Paella rojos",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
       },
       {
-        "name": "Paella de Rojos",
+        "name": "Paella marisco especial",
         "rice": true,
         "reservedMinutes": 25,
         "notReservedMinutes": 55
@@ -551,13 +569,28 @@ window.APP_DATA = {
         ]
       },
       {
-        "name": "Torrija de Horchata"
-      },
-      {
         "name": "Tiramisú"
       },
       {
+        "name": "Torrija"
+      },
+      {
+        "name": "Fruta"
+      },
+      {
         "name": "Flan"
+      },
+      {
+        "name": "Sorbete de limón con cava"
+      },
+      {
+        "name": "Sorbete de limón sin cava"
+      },
+      {
+        "name": "Sorbete de mandarina con cava"
+      },
+      {
+        "name": "Sorbete de mandarina sin cava"
       }
     ],
     "tintos": [

@@ -91,3 +91,5 @@ body{overscroll-behavior:none}
 .coffee-note-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:2px 0 14px}
 .coffee-note-chip{border:2px solid #bbb;background:#f6f6f6;color:#111;border-radius:12px;padding:13px 7px;font-size:15px;font-weight:750;min-height:48px}
 .coffee-note-chip.selected{background:#533523;border-color:#533523;color:white}
+
+.search-wrap{position:relative}.search-wrap .search{padding-right:46px}.search-clear{display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:34px;height:34px;border:0;border-radius:50%;background:#dedee1;color:#333;font-size:23px;line-height:1;align-items:center;justify-content:center;cursor:pointer}.search-wrap.has-text .search-clear{display:flex}
