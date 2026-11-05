@@ -1,0 +1,25 @@
+EL REK PDA v10.11 — NOTAS DEL CATÁLOGO DE TINTOS
+
+- 34 referencias, incluyendo MAGNUM Matarromera y MAGNUM Piérola.
+- Precio, añada y nombre: carta de El Rek, verano 2026.
+- Ocho filtros, sin filtro extra de suavidad/taninos (petición del usuario).
+- Todos los tintos se clasifican como SECOS en esta versión. Es una
+  clasificación comercial provisional si no hay analítica de la añada.
+- El cuerpo (ligero, medio, con cuerpo) se simplifica para el servicio.
+- Sabores y maridajes: perfil general y sugerencias gastronómicas; NO se
+  trata de maridajes garantizados o certificados por las bodegas.
+- Etiquetas de crianza: Joven, Roble, Barrica larga, Crianza, Reserva, Gran
+  reserva. «Barrica larga» NO implica que el vino pueda etiquetarse como
+  Crianza o Reserva; es una etiqueta práctica de buscador.
+- La D.O. del filtro agrupa geográficamente, como se acordó en blancos;
+  `designation` presenta la denominación / región de la referencia.
+- Se conservaron discrepancias relevantes en `dataNote`: Maduresa 2023
+  tiene composición reportada distinta de la carta; Huella de Garnacha
+  parece ser Garnacha Tintorera; 200 Monges tiene fuentes que añaden Viura;
+  conviene contrastar estas referencias con la botella real del restaurante.
+- Tempranillo y Tinto Fino se unen para el filtro de uva; el nombre exacto
+  sigue apareciendo en cada ficha. Garnacha Tintorera se incluye en el grupo
+  práctico «Garnacha» aunque es una variedad distinta.
+- Los Magnum conservan las propiedades del vino normal de su misma añada,
+  diferenciándose por nombre y precio.
+- Blancos de v10.10 intactos. El comportamiento de pedidos no cambia.

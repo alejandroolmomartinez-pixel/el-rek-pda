@@ -137,3 +137,14 @@ body{overscroll-behavior:none}
 .wine-filter-chip:focus-visible,.wine-apply-btn:focus-visible,.wine-filter-submit:focus-visible{
  outline:3px solid #8f7836;outline-offset:2px;
 }
+
+/* v10.11 — Tintos: mismo granate que en la carta de productos (#33121a). */
+.wine-recommend-trigger.red-wine-trigger{background:#33121a;color:#fff;border-color:#33121a}
+.wine-red .wine-rec-item{background:#33121a;border-color:#33121a}
+.wine-red .wine-rec-name,.wine-red .wine-rec-details{color:#fff}
+.wine-red .wine-rec-details{opacity:.90}
+.wine-red .wine-rec-soldout{color:#ffd5d5}
+.wine-red .wine-apply-btn,.wine-red .wine-filter-submit{background:#33121a;color:#fff;box-shadow:0 1px 0 #14070a}
+.wine-red .wine-filter-chip{background:#fff8f9;border-color:#d6b9c0}
+.wine-red .wine-filter-chip.chosen{background:#33121a;color:#fff;border-color:#33121a;box-shadow:inset 0 0 0 1px #33121a}
+.wine-red .wine-filter-chip:focus-visible,.wine-red .wine-filter-submit:focus-visible,.wine-red .wine-apply-btn:focus-visible,.red-wine-trigger:focus-visible{outline:3px solid #b87889;outline-offset:2px}

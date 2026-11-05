@@ -62,7 +62,7 @@ function goOrder(n){nav=[{type:"tables"},{type:"table",table:n}];render()}
 function goSearch(n){nav=[{type:"tables"},{type:"categories",table:n,focusSearch:true,searchTerm:""}];render();const input=document.querySelector("#globalSearch");if(input){input.focus();try{input.setSelectionRange(input.value.length,input.value.length)}catch(e){}}}
 function titleBar(title,plus=false){return `<div class="topbar">${nav.length>1?`<button class="iconbtn" onclick="back()">‹</button>`:`<div class="spacer"></div>`}<h1>${esc(title)}</h1>${plus?`<button class="iconbtn" onclick="openCategories(${currentView().table})">+</button>`:`<div class="spacer"></div>`}</div>`}
 function render(){
- const v=currentView(); let html=`<main class="shell">`;
+ const v=currentView(); let html=`<main class="shell${v.type==='red-wine-recommend'||v.type==='red-wine-filters'?' wine-red':''}">`;
  if(v.type==="tables")html+=renderTables();
  if(v.type==="table")html+=renderTable(v.table);
  if(v.type==="categories")html+=renderCategories(v.table);
@@ -73,6 +73,8 @@ function render(){
  if(v.type==="outside")html+=renderOutside(v.table);
  if(v.type==="wine-recommend")html+=renderWhiteWineRecommender(v);
  if(v.type==="wine-filters")html+=renderWhiteWineFilters(v);
+ if(v.type==="red-wine-recommend")html+=renderRedWineRecommender(v);
+ if(v.type==="red-wine-filters")html+=renderRedWineFilters(v);
  const tn=tableContextNumber(v);
  if(tn)html+=tableNav(tn,v.type==="table"?"order":(v.type==="categories"?"search":""));
  html+=`</main>`;document.querySelector("#app").innerHTML=html;
@@ -231,7 +233,7 @@ function coffeeClass(name){return name==="Infusiones"?"coffee-infusion":name.inc
 function renderProducts(v){
  const cat=categories.find(c=>c.id===v.cat),list=products[v.cat]||[];
  let h=titleBar(cat.name);
- if(cat.wine){const wineSearch=`<div class="search-wrap"><input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value);toggleSearchClear(this)"><button class="search-clear" type="button" aria-label="Borrar búsqueda" onclick="clearProductSearch()">×</button></div>`;h+=v.cat==="blancos"?`<div class="wine-search-with-recommend">${wineSearch}<button class="wine-recommend-trigger" onclick="goWhiteWineRecommender()">Recomendar</button></div>`:wineSearch;}
+ if(cat.wine){const wineSearch=`<div class="search-wrap"><input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value);toggleSearchClear(this)"><button class="search-clear" type="button" aria-label="Borrar búsqueda" onclick="clearProductSearch()">×</button></div>`;h+=v.cat==="blancos"?`<div class="wine-search-with-recommend">${wineSearch}<button class="wine-recommend-trigger" onclick="goWhiteWineRecommender()">Recomendar</button></div>`:v.cat==="tintos"?`<div class="wine-search-with-recommend">${wineSearch}<button class="wine-recommend-trigger red-wine-trigger" onclick="goRedWineRecommender()">Recomendar</button></div>`:wineSearch;}
  h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:(v.cat==="bebidas"?drinkClass(p.name):v.cat==="cafes"?coffeeClass(p.name):""))).join("")}</div>`;return h
 }
 function filterWine(q,remember=true){if(remember&&currentView().type==="products")currentView().wineSearch=q;q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
