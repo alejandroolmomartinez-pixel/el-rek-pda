@@ -93,3 +93,6 @@ body{overscroll-behavior:none}
 .coffee-note-chip.selected{background:#533523;border-color:#533523;color:white}
 
 .search-wrap{position:relative}.search-wrap .search{padding-right:46px}.search-clear{display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:34px;height:34px;border:0;border-radius:50%;background:#dedee1;color:#333;font-size:23px;line-height:1;align-items:center;justify-content:center;cursor:pointer}.search-wrap.has-text .search-clear{display:flex}
+
+/* Principal listo para sacar tras servir todos los entrantes */
+.table.ready-main{background:#C76A32;color:#fff}

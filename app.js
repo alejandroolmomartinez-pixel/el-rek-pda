@@ -4,7 +4,6 @@ const STORAGE="elrek-pda-v1";
 let state=loadState();
 let nav=[{type:"tables"}];
 let moveSource=null;
-let alarmIds=new Set();
 
 function freshTable(n){return {number:n,diners:null,paid:false,orders:[]}}
 function freshState(){return {tables:Array.from({length:15},(_,i)=>freshTable(i+1)),outOfMenu:[],unavailable:[]}}
@@ -33,12 +32,22 @@ function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2
 function fmt(ms){let s=Math.max(0,Math.ceil(ms/1000)),m=Math.floor(s/60);s%=60;return `${m}:${String(s).padStart(2,"0")}`}
 function activeTimers(t){return t.orders.filter(o=>o.timerEnd && !o.timerAck && o.timerEnd>Date.now()-86400000)}
 function shortest(t){const a=activeTimers(t).filter(o=>o.timerEnd>Date.now());return a.sort((x,y)=>x.timerEnd-y.timerEnd)[0]}
+// El naranja avisa de un principal pendiente cuando los entrantes ya han salido.
+const starterNames=new Set([...products.frios,...products.calientes].map(p=>p.name));
+const fishNames=new Set(["Lubina","Lenguado","Rodaballo"]);
 function tableVisualState(t){
  const normal=t.orders.filter(o=>!o.rice);
- if(!normal.length)return "neutral";
+ // El rojo de los productos ordinarios sin marchar mantiene la prioridad.
  if(normal.some(o=>!o.marched&&!o.served))return "needs-march";
+ const startersServed=t.orders.filter(o=>starterNames.has(o.name)).every(o=>o.served);
+ const principalReady=t.orders.some(o=>o.marched&&!o.served&&(
+   (o.rice&&o.timerEnd!=null&&o.timerEnd<=Date.now()) ||
+   (fishNames.has(o.name))
+ ));
+ if(startersServed&&principalReady)return "ready-main";
  if(normal.some(o=>!o.served))return "needs-serve";
- return "all-served";
+ if(normal.length)return "all-served";
+ return "neutral";
 }
 function tableContextNumber(v=currentView()){return v&&v.type!=="tables"?v.table:null}
 function tableNav(n,active=""){
@@ -95,7 +104,7 @@ function tapTable(n){
 }
 
 function newDay(){modal("¿EMPEZAR UN NUEVO DÍA?","<p>Se vaciarán todas las mesas, Fuera de carta y los productos agotados del servicio actual.</p>",[{label:"Cancelar"},{label:"CONTINUAR",danger:true,action:confirmNewDay}])}
-function confirmNewDay(){modal("¿Seguro?","<p>Esta acción no se puede deshacer.</p>",[{label:"Cancelar"},{label:"REINICIAR",danger:true,action:()=>{state=freshState();moveSource=null;alarmIds.clear();save();closeModal();nav=[{type:"tables"}];render()}}])}
+function confirmNewDay(){modal("¿Seguro?","<p>Esta acción no se puede deshacer.</p>",[{label:"Cancelar"},{label:"REINICIAR",danger:true,action:()=>{state=freshState();moveSource=null;save();closeModal();nav=[{type:"tables"}];render()}}])}
 function startMove(){
  modal("Mover mesa","<p>Selecciona la mesa de origen.</p>",[{label:"Cancelar"},{label:"Elegir origen",primary:true,action:()=>{closeModal();chooseMoveSource()}}])
 }
@@ -116,7 +125,7 @@ function openServeAdmin(n,id){
  const o=table(n).orders.find(x=>x.id===id);if(!o||!o.marched)return;
  if(o.served){o.served=false;save();render();return}
  o.marched=false;o.served=false;
- if(o.rice){o.timerEnd=null;o.timerAck=false;alarmIds.delete(o.id);document.querySelector("#alarm-"+o.id)?.remove()}
+ if(o.rice){o.timerEnd=null;o.timerAck=false;}
  save();render()
 }
 function renderTable(n){
@@ -136,11 +145,11 @@ function renderTable(n){
 function editDiners(n){const t=table(n);modal("Editar comensales",`<input id="diners" type="number" inputmode="numeric" min="1" value="${t.diners}">`,[{label:"Cancelar"},{label:"Guardar",primary:true,action:()=>{let x=parseInt(document.querySelector("#diners").value);if(x>0){t.diners=x;save();closeModal();render()}}}])}
 function startRiceTimerOnMarch(o){
  if(!o?.rice||o.timerEnd)return;
- o.timerEnd=Date.now()+((o.reserved?o.reservedMinutes:o.notReservedMinutes)*60000);o.timerAck=false;requestNotify()
+ o.timerEnd=Date.now()+((o.reserved?o.reservedMinutes:o.notReservedMinutes)*60000);o.timerAck=false
 }
 function clearRiceTimer(o){
  if(!o?.rice)return;
- o.timerEnd=null;o.timerAck=true;alarmIds.delete(o.id);document.querySelector("#alarm-"+o.id)?.remove()
+ o.timerEnd=null;o.timerAck=true;
 }
 function marchTable(n){const t=table(n);let changed=false;t.orders.forEach(o=>{if(!o.served&&!o.marched){o.marched=true;startRiceTimerOnMarch(o);changed=true}});if(changed){save();render()}}
 function toggleServed(n,id){
@@ -178,7 +187,7 @@ function editRice(n,id){
 function startRiceTimer(n,id){
  const o=table(n).orders.find(x=>x.id===id);if(!o||!o.rice)return;
  o.timerEnd=Date.now()+((o.reserved?o.reservedMinutes:o.notReservedMinutes)*60000);o.timerAck=false;
- save();closeModal();render();showAddedToast(`Temporizador · ${o.name}`,o.qty);requestNotify();
+ save();closeModal();render();showAddedToast(`Temporizador · ${o.name}`,o.qty);
 }
 function setRiceEditChoice(v){document.querySelector("#ricechoice").value=v?"1":"0"}
 function deleteOrder(n,id){let t=table(n);t.orders=t.orders.filter(x=>x.id!==id);save();closeModal();render()}
@@ -295,21 +304,28 @@ function modal(title,body,buttons){
  }
 }
 function closeModal(){document.querySelector("#modal-root").innerHTML=""}
-function requestNotify(){if("Notification"in window&&Notification.permission==="default")Notification.requestPermission().catch(()=>{})}
+// Solo se actualiza la cuenta atrás; sin alertas, vibraciones ni notificaciones.
+let lastTableColorUpdate=-1;
 function checkTimers(){
+ const now=Date.now();
  document.querySelectorAll("[data-timer]").forEach(el=>{
-   const id=el.dataset.timer;let o;for(const t of state.tables){o=t.orders.find(x=>x.id===id);if(o)break}
-   if(o)el.textContent=fmt(o.timerEnd-Date.now())
+   const id=el.dataset.timer;let o;
+   for(const t of state.tables){o=t.orders.find(x=>x.id===id);if(o)break}
+   if(o)el.textContent=fmt(o.timerEnd-now);
  });
- for(const t of state.tables)for(const o of t.orders){
-   if(o.timerEnd&&!o.timerAck&&o.timerEnd<=Date.now()&&!alarmIds.has(o.id)){alarmIds.add(o.id);timerAlarm(t,o)}
+ // Recalcular el color en la vista principal al cumplirse los tiempos.
+ if(currentView().type==="tables"){
+   const minute=Math.floor(now/1000);
+   if(minute!==lastTableColorUpdate){
+     lastTableColorUpdate=minute;
+     state.tables.forEach(t=>{
+       const button=document.querySelector(`.table-grid .table[onclick="tapTable(${t.number})"]`);
+       if(!button||t.diners==null)return;
+       button.classList.remove("neutral","needs-march","needs-serve","all-served","ready-main");
+       button.classList.add(tableVisualState(t));
+     });
+   }
  }
 }
-function timerAlarm(t,o){
- if(navigator.vibrate)navigator.vibrate([500,250,500,250,900,300,900]);
- if("Notification"in window&&Notification.permission==="granted"){try{new Notification(`Mesa ${t.number} · ${o.qty} raciones`,{body:o.name,silent:true,tag:o.id})}catch(e){}}
- document.body.insertAdjacentHTML("beforeend",`<div class="alert" id="alarm-${o.id}"><div class="alert-card"><h2>⏱ Mesa ${t.number}</h2><p>${esc(o.name)}<br><b>${o.qty} raciones</b></p><button onclick="ackTimer('${o.id}')">LISTO</button></div></div>`)
-}
-function ackTimer(id){for(const t of state.tables){let o=t.orders.find(x=>x.id===id);if(o){o.timerAck=true;break}}save();document.querySelector("#alarm-"+id)?.remove();render()}
 setInterval(checkTimers,1000);
 window.addEventListener("load",()=>{render();if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{})});
