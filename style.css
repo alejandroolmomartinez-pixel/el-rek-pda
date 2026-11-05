@@ -151,3 +151,15 @@ body{overscroll-behavior:none}
 .wine-red .wine-filter-chip{background:#fff8f9;border-color:#d6b9c0}
 .wine-red .wine-filter-chip.chosen{background:#33121a;color:#fff;border-color:#33121a;box-shadow:inset 0 0 0 1px #33121a}
 .wine-red .wine-filter-chip:focus-visible,.wine-red .wine-filter-submit:focus-visible,.wine-red .wine-apply-btn:focus-visible,.red-wine-trigger:focus-visible{outline:3px solid #b87889;outline-offset:2px}
+
+
+/* v10.14 — Rosados: mismo rosa que los botones de la carta (#d9879d). */
+.wine-recommend-trigger.rose-wine-trigger{background:#d9879d;color:#30121c;border-color:#d9879d}
+.wine-rose .wine-rec-item{background:#d9879d;border-color:#c9768d}
+.wine-rose .wine-rec-name,.wine-rose .wine-rec-price,.wine-rose .wine-rec-details{color:#30121c}
+.wine-rose .wine-rec-details{opacity:.95}
+.wine-rose .wine-rec-soldout{color:#7a1826}
+.wine-rose .wine-apply-btn,.wine-rose .wine-filter-submit{background:#d9879d;color:#30121c;box-shadow:0 1px 0 #975264}
+.wine-rose .wine-filter-chip{background:#fff5f7;border-color:#e5b7c4}
+.wine-rose .wine-filter-chip.chosen{background:#d9879d;color:#30121c;border-color:#aa546d;box-shadow:inset 0 0 0 1px #aa546d}
+.wine-rose .wine-filter-chip:focus-visible,.wine-rose .wine-filter-submit:focus-visible,.wine-rose .wine-apply-btn:focus-visible,.rose-wine-trigger:focus-visible{outline:3px solid #8c3e56;outline-offset:2px}

@@ -1,0 +1,52 @@
+EL REK PDA v10.14 — RECOMENDADOR DE VINOS ROSADOS
+==================================================
+
+Nueva pantalla: Recomendar, junto al buscador de vinos rosados.
+La carta y la operativa de pedidos de rosados no cambian.
+
+5 referencias / 7 filtros:
+  - Denominación de origen (zona)
+  - Precio máximo (€)
+  - Dulzor
+  - Cuerpo
+  - Sabor
+  - Maridaje
+  - Uva
+
+Filtros: selección múltiple (OR) dentro de cada categoría; AND entre
+categorías. Solo aparecen opciones con al menos un rosado asignado.
+El precio se muestra al lado derecho del nombre, con igual tamaño y negrita.
+La descripción inferior conserva el orden de los filtros y omite
+los campos seleccionados, salvo las opciones agrupadas 'Otras'.
+Tono rosa: #d9879d, idéntico al original de los vinos rosados.
+
+Vinos (precios de la carta de verano 2026):
+  1. Huella de Merlot Rosé 2025 — 21 €
+  2. Bobal Rosa 2024 — 23 €
+  3. Impromptu Rosé Pinot Noir 2025 — 39 €
+  4. Hoya de los Lobos Rosado 2023 — 23 €
+  5. Piérola Rosado 2024 — 25 €
+
+FUENTES Y CAUTELAS:
+- Nombre, precio, uva y zona tomados de la carta de vinos El Rek 2026.
+- Perfil y propuestas de maridaje de la clasificación desarrollada en
+  esta conversación a partir de fichas de productores e información de la carta.
+- Para Huella, Bobal Rosa y Hoya de los Lobos, 'Seco' es la clasificación
+  más probable, no verificada mediante analítica específica de la añada.
+- Cuerpo y maridajes específicos de arroces son orientativos, no categorías
+  analíticas ni afirmaciones certificadas por la bodega.
+- La lista 'estimated' mantiene identificadas esas valoraciones internamente.
+- La ficha de Impromptu rosado de Hispano+Suizas describe crianza en roble
+  francés, aunque la carta de El Rek indica americano; no hay filtro de crianza
+  para rosados, por lo que la discrepancia no se propaga a la UI.
+
+ARCHIVOS NUEVOS:
+  rose-wines.js
+  rose-wine-recommender.js
+
+ARCHIVOS ACTUALIZADOS:
+  app.js, index.html, style.css, sw.js
+
+Los demás archivos proceden intactos de v10.13.
+Para actualizar, sustituye todos los archivos de la PWA por los del ZIP.
+La clave local de mesas no ha cambiado: elrek-pda-v1.
