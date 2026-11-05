@@ -1,16 +1,12 @@
-/* El Rek PDA v10.9 — vinos blancos, filtro por zona asociada a D.O. y maridajes del menú.
-  - 42 referencias. Bodega/etiqueta original conservada en designation/grapes.
-  - El grupo "Otras uvas" se reserva a vinos que no incluyen ninguna de las
-    variedades principales del filtro; mezclas con al menos una uva principal
-    ya no aparecen engañosamente como "Otras uvas".
-  - El filtro agrupa por zona vitivinícola (D.O. de referencia), aunque un vino
-    no esté amparado por esa D.O. La denominación real se conserva en designation.
-  - Beio: grupo Valencia por sede de bodega; procedencia exacta de uva no certificada.
-  - Mestizaje/Finca Calvestra: grupo Utiel-Requena por ubicación de finca.
-  - 4 referencias IGP Castilla y León: grupo Rueda por localización geográfica.
-  - Los maridajes por tipo de arroz son PROPUESTAS GASTRONÓMICAS, marcadas
-    internamente como ricePairingsEstimated, no fichas de maridaje de la bodega.
-  - Se conservan pairingDetails y pairingsV107 para auditar cambios.
+/* El Rek PDA v10.10 — catálogo completo de vinos blancos de la v10.9.
+  42 referencias, incluidos 3 Magnum. La procedencia oficial se conserva.
+  Los 13 maridajes individuales de arroz de v10.9 se agrupan en 5 familias
+  con nombres reconocibles en el servicio. Se conserva pairingsV109 para auditoría.
+  La pertenencia a cada familia se decide por coincidencia con CUALQUIERA de sus
+  platos; son asociaciones gastronómicas orientativas, no validación de la bodega.
+  Se permite selección múltiple en todos los filtros categóricos: OR dentro
+  de cada filtro, AND entre categorías distintas.
+  estimated, designation, pairingDetails, grapes, etc. permanecen intactos.
 */
 window.WHITE_WINES = [
   {
@@ -29,10 +25,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Malvasía",
@@ -74,7 +70,16 @@ window.WHITE_WINES = [
       "Malvasía",
       "Moscatel"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "Huella de Merseguera",
@@ -89,10 +94,10 @@ window.WHITE_WINES = [
     ],
     "pairings": [
       "Marisco",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Merseguera"
@@ -123,7 +128,14 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Merseguera"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Marisco",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "Atance",
@@ -140,10 +152,9 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto"
     ],
     "grapes": [
       "Chardonnay"
@@ -176,7 +187,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Chardonnay"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "La Muà",
@@ -191,9 +211,9 @@ window.WHITE_WINES = [
     ],
     "pairings": [
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Sauvignon Blanc"
@@ -225,7 +245,13 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Sauvignon Blanc"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "Cullerot",
@@ -243,10 +269,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Macabeo",
@@ -287,7 +312,15 @@ window.WHITE_WINES = [
       "Malvasía",
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Clos de Lôm",
@@ -303,10 +336,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Malvasía"
@@ -340,7 +372,15 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Malvasía"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "Dominio de Calles Verdejo Afrutado",
@@ -355,8 +395,8 @@ window.WHITE_WINES = [
     "pairings": [
       "Marisco",
       "Carnes",
-      "Verduras",
-      "Marisco / Senyoret"
+      "Marisco y bogavante",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -390,7 +430,13 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Marisco",
+      "Carnes",
+      "Verduras",
+      "Marisco / Senyoret"
+    ]
   },
   {
     "name": "Beio",
@@ -405,11 +451,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto"
     ],
     "grapes": [
       "Godello"
@@ -445,7 +489,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Godello"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Nebla Chardonnay sobre lías",
@@ -461,10 +514,9 @@ window.WHITE_WINES = [
     ],
     "pairings": [
       "Pescado",
-      "Paella valenciana",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto"
     ],
     "grapes": [
       "Chardonnay"
@@ -499,7 +551,14 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Chardonnay"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Bobal Blanco",
@@ -515,9 +574,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Bobal"
@@ -552,7 +611,14 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro"
+    ]
   },
   {
     "name": "Impromptu Sauvignon Blanc",
@@ -569,13 +635,9 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto"
     ],
     "grapes": [
       "Sauvignon Blanc"
@@ -612,7 +674,19 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Sauvignon Blanc"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Enrique Mendoza Chardonnay Joven",
@@ -629,8 +703,8 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Carnes",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton"
     ],
     "grapes": [
       "Chardonnay"
@@ -662,7 +736,13 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Chardonnay"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Carnes",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "Pepe Mendoza Blanco",
@@ -680,10 +760,9 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Moscatel",
@@ -721,7 +800,16 @@ window.WHITE_WINES = [
       "Moscatel",
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Marina Alta Colección",
@@ -737,11 +825,8 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Marisco / Senyoret",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton"
     ],
     "grapes": [
       "Moscatel de Alejandría"
@@ -774,7 +859,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Moscatel"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Marisco / Senyoret",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Carlos Moro Viña Tenencia",
@@ -790,10 +884,8 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton"
     ],
     "grapes": [
       "Treixadura",
@@ -830,7 +922,15 @@ window.WHITE_WINES = [
       "Godello",
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Mestizaje Blanco",
@@ -846,11 +946,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Merseguera",
@@ -891,7 +990,17 @@ window.WHITE_WINES = [
       "Malvasía",
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Finca Calvestra",
@@ -909,17 +1018,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Pato y foie",
-      "Secreto ibérico",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de rojos",
-      "Meloso de marisco",
-      "Fesols i naps"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Merseguera"
@@ -958,7 +1060,23 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Merseguera"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Secreto ibérico",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco",
+      "Fesols i naps"
+    ]
   },
   {
     "name": "Cyatho",
@@ -976,10 +1094,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1014,7 +1132,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "MAGNUM Cyatho",
@@ -1032,10 +1159,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1070,7 +1197,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "De Locos",
@@ -1086,11 +1222,10 @@ window.WHITE_WINES = [
     ],
     "pairings": [
       "Pescado",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1125,7 +1260,15 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Marqués de Riscal",
@@ -1142,10 +1285,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1180,7 +1323,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "Circe",
@@ -1198,9 +1350,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1235,7 +1387,14 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "José Pariente",
@@ -1254,13 +1413,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1301,7 +1457,19 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "MAGNUM José Pariente",
@@ -1320,13 +1488,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1367,7 +1532,19 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Nebla (Vicente Gandía)",
@@ -1383,9 +1560,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1420,7 +1597,14 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "El Sermón",
@@ -1435,9 +1619,9 @@ window.WHITE_WINES = [
     ],
     "pairings": [
       "Pescado",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Plancton y gamba"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Verdejo"
@@ -1470,7 +1654,13 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
+    ]
   },
   {
     "name": "La Caseta",
@@ -1488,15 +1678,10 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Carnes",
-      "Paella valenciana",
-      "Pato y foie",
-      "Secreto ibérico",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Meloso de marisco",
-      "Fesols i naps"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Verdejo"
@@ -1533,7 +1718,20 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Secreto ibérico",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Meloso de marisco",
+      "Fesols i naps"
+    ]
   },
   {
     "name": "Ossian Ecológico",
@@ -1551,17 +1749,10 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Carnes",
-      "Paella valenciana",
-      "Pato y foie",
-      "Secreto ibérico",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de rojos",
-      "Meloso de marisco",
-      "Fesols i naps"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Verdejo"
@@ -1596,7 +1787,22 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Verdejo"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Secreto ibérico",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco",
+      "Fesols i naps"
+    ]
   },
   {
     "name": "Viñas del Vero Chardonnay",
@@ -1611,9 +1817,9 @@ window.WHITE_WINES = [
     ],
     "pairings": [
       "Pescado",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret"
+      "Marisco y bogavante",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Chardonnay"
@@ -1645,7 +1851,13 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Chardonnay"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret"
+    ]
   },
   {
     "name": "Viñas del Vero Colección Gewürztraminer",
@@ -1660,7 +1872,7 @@ window.WHITE_WINES = [
       "Especiado"
     ],
     "pairings": [
-      "Pato y foie"
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Gewürztraminer"
@@ -1694,7 +1906,10 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pato y foie"
+    ]
   },
   {
     "name": "El Zarzal",
@@ -1713,12 +1928,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Godello"
@@ -1752,7 +1964,17 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Godello"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "La Revelía",
@@ -1770,15 +1992,10 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Paella valenciana",
-      "Pato y foie",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de rojos",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Godello"
@@ -1812,7 +2029,20 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Godello"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Paella valenciana",
+      "Pato y foie",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "FyA Bs Semidulce",
@@ -1827,7 +2057,7 @@ window.WHITE_WINES = [
       "Floral"
     ],
     "pairings": [
-      "Pato y foie"
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Viura",
@@ -1862,7 +2092,10 @@ window.WHITE_WINES = [
       "Malvasía",
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pato y foie"
+    ]
   },
   {
     "name": "Don Pedro de Soutomaior",
@@ -1882,12 +2115,9 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Albariño"
@@ -1925,7 +2155,18 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Albariño"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Leneas",
@@ -1941,11 +2182,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Paella bogavante",
-      "Plancton y gamba",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Albariño"
@@ -1978,7 +2217,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Albariño"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Paella bogavante",
+      "Plancton y gamba",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Veigadares",
@@ -1996,14 +2244,9 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de rojos",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto"
     ],
     "grapes": [
       "Albariño",
@@ -2042,7 +2285,20 @@ window.WHITE_WINES = [
       "Albariño",
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Mar de Frades",
@@ -2060,13 +2316,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Rojos / Marisco especial",
-      "Plancton y gamba",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Albariño"
@@ -2100,7 +2352,18 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Albariño"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Plancton y gamba",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "MAGNUM Mar de Frades",
@@ -2118,13 +2381,9 @@ window.WHITE_WINES = [
     "pairings": [
       "Pescado",
       "Marisco",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Rojos / Marisco especial",
-      "Plancton y gamba",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Verduras"
     ],
     "grapes": [
       "Albariño"
@@ -2158,7 +2417,18 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Albariño"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Plancton y gamba",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Lusco Pazo Piñeiro",
@@ -2177,15 +2447,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Pato y foie",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de rojos",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Albariño"
@@ -2219,7 +2484,21 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Albariño"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Terras do Cigarrón",
@@ -2237,11 +2516,9 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Paella bogavante",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Godello"
@@ -2276,7 +2553,17 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Godello"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Paella bogavante",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Louro",
@@ -2295,15 +2582,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Pato y foie",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Paella bogavante",
-      "Meloso bogavante",
-      "Rojos / Marisco especial",
-      "Meloso de rojos",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Pato, foie y fesols"
     ],
     "grapes": [
       "Godello",
@@ -2341,7 +2623,21 @@ window.WHITE_WINES = [
       "Godello",
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
+    ]
   },
   {
     "name": "Gustave Lorentz",
@@ -2360,11 +2656,10 @@ window.WHITE_WINES = [
       "Pescado",
       "Marisco",
       "Carnes",
-      "Paella valenciana",
-      "Verduras",
-      "Marisco / Senyoret",
-      "Arroz negro",
-      "Meloso de marisco"
+      "Marisco y bogavante",
+      "Negro, rojos y plancton",
+      "Valenciana y secreto",
+      "Verduras"
     ],
     "grapes": [
       "Riesling"
@@ -2399,6 +2694,16 @@ window.WHITE_WINES = [
     "grapeGroupsV107": [
       "Otras uvas"
     ],
-    "ricePairingsEstimated": true
+    "ricePairingsEstimated": true,
+    "pairingsV109": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
+    ]
   }
 ];

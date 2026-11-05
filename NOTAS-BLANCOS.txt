@@ -69,3 +69,17 @@ La uva de Beio no está localizada con precisión, agrupación por la bodega.
 Fuentes: vegamar.es/sobre-nosotros, bodegamustiguillo.com/nuestras-fincas/,
 BOE-A-2002-16362 (ámbito de Rueda), VicenteGandia Nebla Verdejo y
 fichas especializadas de El Sermón, La Caseta y Ossian.
+
+
+V10.10: AGRUPACIÓN DE ARROCES Y SELECCIÓN MÚLTIPLE
+Maridaje contiene ahora 8 opciones: Pescado, Marisco, Carnes,
+Marisco y bogavante; Negro, rojos y plancton; Valenciana y secreto;
+Pato, foie y fesols; Verduras.
+Regla de agrupación: si el vino coincidía con algún plato individual del
+nuevo grupo, se incluye en el grupo. La lista anterior se conserva en
+pairingsV109 en cada ficha para una auditoría posterior.
+Todas las categorías admiten múltiples opciones excepto Precio (importe máximo).
+Opciones de la misma categoría se unen mediante OR. Categorías diferentes se
+combinan mediante AND. La información oculta al filtrar sigue el orden fijo.
+Los controles y tarjetas de Recomendar usan el mismo amarillo #f0dfad que
+los botones de los vinos blancos de la carta original.

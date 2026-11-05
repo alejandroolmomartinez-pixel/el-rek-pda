@@ -1,4 +1,4 @@
-/* El Rek PDA v10.9 · Recomendador exclusivo de blancos.
+/* El Rek PDA v10.10 · Recomendador exclusivo de blancos.
    No modifica los pedidos, el almacenamiento ni las categorías existentes. */
 const WHITE_WINE_FILTERS = [
   {key:'designationGroup', label:'Denominación de origen (zona)'},
@@ -14,7 +14,7 @@ const WHITE_WINE_OPTIONS = {
   sweetness:['Seco','Semiseco','Semidulce','Dulce'],
   body:['Ligero','Medio','Con cuerpo'],
   flavors:['Afrutado','Cítrico','Floral','Herbáceo','Mineral','Especiado','Tostado'],
-  pairings:['Pescado','Marisco','Carnes','Paella valenciana','Pato y foie','Secreto ibérico','Verduras','Marisco / Senyoret','Arroz negro','Paella bogavante','Meloso bogavante','Rojos / Marisco especial','Meloso de rojos','Plancton y gamba','Meloso de marisco','Fesols i naps'],
+  pairings:['Pescado','Marisco','Carnes','Marisco y bogavante','Negro, rojos y plancton','Valenciana y secreto','Pato, foie y fesols','Verduras'],
   grapeGroups:['Verdejo','Albariño','Godello','Chardonnay','Merseguera','Malvasía','Moscatel','Sauvignon Blanc','Otras uvas']
 };
 function whiteWineEmptyFilters(){return {designationGroup:[],price:null,sweetness:[],body:[],flavors:[],pairings:[],grapeGroups:[]}}
@@ -24,9 +24,10 @@ function whiteWineMatches(w,f){
  if(whiteWineHasField(f,'price')&&w.price>f.price)return false;
  for(const key of ['designationGroup','sweetness','body','flavors','pairings','grapeGroups']){
   if(!whiteWineHasField(f,key))continue;
-  if(key==='designationGroup'||key==='sweetness'||key==='body'){
-   if(!f[key].includes(w[key]))return false;
-  }else if(!f[key].every(value=>w[key].includes(value)))return false;
+  // Varias opciones de un MISMO filtro = O (OR).
+  // Entre diferentes filtros = Y (AND).
+  const values=Array.isArray(w[key])?w[key]:[w[key]];
+  if(!f[key].some(selected=>values.includes(selected)))return false;
  }
  return true;
 }
@@ -45,7 +46,7 @@ function whiteWineRemainingLine(w,f){
 function whiteWineSelectedCount(f){return WHITE_WINE_FILTERS.filter(o=>whiteWineHasField(f,o.key)).length}
 function goWhiteWineRecommender(){const v=currentView();push({type:'wine-recommend',table:v.table,filters:whiteWineEmptyFilters()})}
 function openWhiteWineFilters(){const v=currentView();push({type:'wine-filters',table:v.table,draft:whiteWineFiltersCopy(v.filters)})}
-function whiteWineSetDraftValue(field,value){const v=currentView();if(v.type!=='wine-filters')return;const values=v.draft[field];const i=values.indexOf(value);if(i!==-1)values.splice(i,1);else if(['designationGroup','sweetness','body'].includes(field)){v.draft[field]=[value]}else values.push(value);render()}
+function whiteWineSetDraftValue(field,value){const v=currentView();if(v.type!=='wine-filters')return;const values=v.draft[field];const i=values.indexOf(value);if(i!==-1)values.splice(i,1);else values.push(value);render()}
 function whiteWineApplyFilters(){const v=currentView();if(v.type!=='wine-filters')return;const num=document.querySelector('#white-wine-max-price');if(num){const val=num.value.trim();v.draft.price=val===''?null:Number(val);if(v.draft.price!==null&&(!Number.isFinite(v.draft.price)||v.draft.price<=0)){v.draft.price=null}}
  const previous=nav[nav.length-2];if(previous&&previous.type==='wine-recommend')previous.filters=whiteWineFiltersCopy(v.draft);
  nav.pop();render();
@@ -74,17 +75,17 @@ function renderWhiteWineRecommender(v){
 }
 function renderWhiteWineFilters(v){
  const f=v.draft;
- let h=titleBar('Filtrar blancos')+'<p class="wine-filter-help">Elige solo lo que necesites. Todos los criterios seleccionados deben cumplirse; puedes marcar varios sabores, maridajes y grupos de uvas. El filtro por zona incluye vinos elaborados en la región aunque su etiqueta legal sea I.G.P. o Vino de España; la denominación real se conserva en cada ficha. «Otras uvas» incluye solo Bobal, Gewürztraminer y Riesling. Los maridajes por arroz son recomendaciones orientativas para la carta de El Rek.</p>';
+ let h=titleBar('Filtrar blancos')+'<p class="wine-filter-help">Puedes marcar varias opciones dentro de cualquier filtro: por ejemplo, «Semiseco» y «Semidulce». Dentro de un mismo filtro basta con cumplir UNA de las opciones; entre distintos filtros deben cumplirse TODOS. El precio indica un máximo. La zona agrupa vinos cercanos aunque no tengan esa D.O. legal. Los maridajes de arroces son recomendaciones orientativas.</p>';
  for(const {key,label} of WHITE_WINE_FILTERS){
   h+=`<section class="wine-filter-section"><h2>${label}</h2>`;
   if(key==='price'){
    h+=`<label class="wine-price-label" for="white-wine-max-price">Precio máximo (€)</label><input id="white-wine-max-price" class="wine-price-input" type="number" min="1" step="1" inputmode="numeric" placeholder="Sin límite" value="${f.price??''}" oninput="currentView().draft.price=this.value===''?null:Number(this.value)">`;
   }else{
    if(key==='pairings'){
-    const optButton=option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`;
+    const optButton=option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" aria-label="${esc(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`;
     h+=`<div class="wine-filter-subheading">Platos</div><div class="wine-filter-options">${WHITE_WINE_OPTIONS.pairings.slice(0,3).map(optButton).join('')}</div>`;
     h+=`<div class="wine-filter-subheading">Arroces y fideuás de nuestra carta</div><div class="wine-filter-options">${WHITE_WINE_OPTIONS.pairings.slice(3).map(optButton).join('')}</div>`;
-   }else h+=`<div class="wine-filter-options">${WHITE_WINE_OPTIONS[key].map(option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`).join('')}</div>`;
+   }else h+=`<div class="wine-filter-options">${WHITE_WINE_OPTIONS[key].map(option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" aria-label="${esc(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`).join('')}</div>`;
   }
   h+='</section>';
  }
