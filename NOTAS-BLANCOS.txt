@@ -1,23 +1,71 @@
-EL REK PDA — DATOS Y FILTROS DEL RECOMENDADOR DE BLANCOS (V10.6)
+RECOMENDADOR BLANCOS v10.8 — MARIDAJE CON ARROCES EL REK
 
-42 referencias, 7 criterios y 3 Magnum.
+42 referencias incluyendo 3 Magnum; origen, precio, sabor, cuerpo, dulzor y uvas
+se mantienen de v10.7.
 
-Cada vino tiene:
-  name       Nombre igual al del menú original de la PDA
-  region     Procedencia mostrada
-  origin     Zona agrupada para el filtro
-  price      Precio de la carta, botella o Magnum, en euros
-  sweetness  Seco / Semiseco / Semidulce
-  body       Ligero / Medio / Con cuerpo
-  flavors    Varios sabores posibles
-  pairings   Varios maridajes posibles
-  grapes     Varias uvas posibles
-  estimated  Campos con interpretación, estimación o verificación pendiente
+D.O. auténtica:
+- Beio = vino varietal (bodega Vegamar, https://vegamar.es/beio-godello-100/)
+- Mestizaje Blanco y Finca Calvestra = Vino de España sin D.O.
+  (https://bodegamustiguillo.com/productos/)
+- No confundir origen geográfico con denominación de origen.
 
-El recomendador cruza los filtros y no necesita conexión a internet.
-Los precios son de la carta de verano 2026 y podrían cambiar.
+Otras uvas: SOLO 3 vinos sin ninguna de las 8 variedades habituales:
+- Bobal Blanco (Bobal)
+- Viñas del Vero Colección Gewürztraminer (Gewürztraminer)
+- Gustave Lorentz Riesling (Riesling)
+En otros blancos con coupage, las variedades minoritarias siguen visibles en
+la ficha pero NO generan un segundo grupo "Otras uvas".
 
-IMPORTANTES: se ha completado una clasificación OPERATIVA, no se han
-obtenido los análisis técnicos de las 42 botellas y añadas exactas.
-Conserva el campo `estimated` antes de utilizar como hechos
-certificados las propiedades de una añada.
+Maridaje muestra tres opciones generales: Pescado, Marisco, Carnes.
+Las 13 familias de arroz por su perfil culinario son:
+- Paella valenciana
+- Pato y foie
+- Secreto ibérico
+- Verduras
+- Marisco / Senyoret
+- Arroz negro
+- Paella bogavante
+- Meloso bogavante
+- Rojos / Marisco especial
+- Meloso de rojos
+- Plancton y gamba
+- Meloso de marisco
+- Fesols i naps
+
+EQUIVALENCIAS CON LA CARTA (21 preparaciones):
+- Valenciana de pollo y conejo -> Paella valenciana.
+- Paella magret de pato/foie/setas, meloso pato/foie/setas y FIFI pato/foie/setas -> Pato y foie.
+- Paella secreto ibérico/setas/ajo tierno -> Secreto ibérico.
+- Paella verduras y FIFI verduras -> Verduras.
+- Paella marisco, Senyoret y FIFI marisco -> Marisco / Senyoret.
+- Arroz negro -> Arroz negro.
+- Paella bogavante azul -> Paella bogavante.
+- Meloso bogavante azul -> Meloso bogavante.
+- Paella marisco especial, Paella rojos y FIFI marisco especial -> Rojos / Marisco especial.
+- Meloso de rojos -> Meloso de rojos.
+- Paella plancton y gamba y FIFI plancton y gamba -> Plancton y gamba.
+- Meloso marisco -> Meloso de marisco.
+- Arroz amb Fesols i Naps -> Fesols i naps.
+Espardenyà no es arroz, así que no se añade como categoría de arroz.
+
+CRITERIO: Los maridajes de arroz distinguen ingredientes, potencia, textura,
+crianza y cuerpo. Son recomendaciones culinarias orientativas, no datos analíticos
+ni maridajes publicados literalmente para cada receta y vino.
+Fuente gastronómica general: https://www.ocu.org/alimentacion/vino/informe/vinos-sabores
+Fuentes de platos: Carta El Rek verano 2026, sección "Nuestros arroces".
+
+
+V10.9: AGRUPACIÓN GEOGRÁFICA ADICIONAL
+En el buscador, «D.O. Valencia» agrupa también Beio (Vegamar, Calles).
+«D.O. Utiel-Requena» agrupa también Mestizaje Blanco y Finca Calvestra
+(Mustiguillo, finca Calvestra, Utiel).
+«D.O. Rueda» agrupa también Nebla Verdejo, El Sermón, La Caseta, Ossian
+(IGP Castilla y León; zona La Seca/Nieva; Nebla por referencias comerciales).
+En la línea de características se sigue mostrando la designación REAL
+cuando no se aplica el filtro de zona. Bajo filtro de zona, la misma se oculta
+conforme al comportamiento pactado; los datos originales permanecen.
+IMPORTANTE: pertenecer a una zona asociada con una D.O. no concede la D.O.
+La uva de Beio no está localizada con precisión, agrupación por la bodega.
+Fuentes: vegamar.es/sobre-nosotros, bodegamustiguillo.com/nuestras-fincas/,
+BOE-A-2002-16362 (ámbito de Rueda), VicenteGandia Nebla Verdejo y
+fichas especializadas de El Sermón, La Caseta y Ossian.

@@ -1,8 +1,17 @@
-/* Recomendador de blancos El Rek · 42 referencias · carta verano 2026.
-   estimated: campos con interpretación o dato no confirmado para esta añada.
-   El azúcar de Dominio de Calles (semiseco) es estimado; confirmar con bodega.
-   Louro incorpora Treixadura según fuentes de la añada 2025; confirmar etiqueta.
-   Gustave Lorentz se considera Riesling Réserve 2022 (identificación probable). */
+/* El Rek PDA v10.9 — vinos blancos, filtro por zona asociada a D.O. y maridajes del menú.
+  - 42 referencias. Bodega/etiqueta original conservada en designation/grapes.
+  - El grupo "Otras uvas" se reserva a vinos que no incluyen ninguna de las
+    variedades principales del filtro; mezclas con al menos una uva principal
+    ya no aparecen engañosamente como "Otras uvas".
+  - El filtro agrupa por zona vitivinícola (D.O. de referencia), aunque un vino
+    no esté amparado por esa D.O. La denominación real se conserva en designation.
+  - Beio: grupo Valencia por sede de bodega; procedencia exacta de uva no certificada.
+  - Mestizaje/Finca Calvestra: grupo Utiel-Requena por ubicación de finca.
+  - 4 referencias IGP Castilla y León: grupo Rueda por localización geográfica.
+  - Los maridajes por tipo de arroz son PROPUESTAS GASTRONÓMICAS, marcadas
+    internamente como ricePairingsEstimated, no fichas de maridaje de la bodega.
+  - Se conservan pairingDetails y pairingsV107 para auditar cambios.
+*/
 window.WHITE_WINES = [
   {
     "name": "Cañas y Barro",
@@ -13,15 +22,17 @@ window.WHITE_WINES = [
     "body": "Ligero",
     "flavors": [
       "Afrutado",
-      "Floral",
-      "Cítrico"
+      "Cítrico",
+      "Floral"
     ],
     "pairings": [
-      "Arroces",
-      "Marisco",
       "Pescado",
-      "Pasta",
-      "Carnes blancas"
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Malvasía",
@@ -31,7 +42,39 @@ window.WHITE_WINES = [
     "estimated": [
       "Cuerpo",
       "Maridaje"
-    ]
+    ],
+    "designation": "D.O. Valencia",
+    "designationGroup": "D.O. Valencia",
+    "flavorDetails": [
+      "Afrutado",
+      "Floral",
+      "Cítrico"
+    ],
+    "pairingDetails": [
+      "Arroces",
+      "Marisco",
+      "Pescado",
+      "Pasta",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Merseguera",
+      "Malvasía",
+      "Moscatel"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Merseguera",
+      "Malvasía",
+      "Moscatel"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Huella de Merseguera",
@@ -45,9 +88,11 @@ window.WHITE_WINES = [
       "Floral"
     ],
     "pairings": [
-      "Arroces",
       "Marisco",
-      "Verduras"
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Merseguera"
@@ -55,7 +100,30 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Valencia",
+    "designationGroup": "D.O. Valencia",
+    "flavorDetails": [
+      "Afrutado",
+      "Floral"
+    ],
+    "pairingDetails": [
+      "Arroces",
+      "Marisco",
+      "Verduras"
+    ],
+    "grapeGroups": [
+      "Merseguera"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Marisco",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Merseguera"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Atance",
@@ -66,21 +134,49 @@ window.WHITE_WINES = [
     "body": "Ligero",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Floral"
     ],
     "pairings": [
       "Pescado",
       "Marisco",
-      "Arroces",
-      "Carnes blancas"
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Chardonnay"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Valencia",
+    "designationGroup": "D.O. Valencia",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Floral"
+    ],
+    "pairingDetails": [
+      "Pescado",
+      "Marisco",
+      "Arroces",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Chardonnay"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes"
+    ],
+    "grapeGroupsV107": [
+      "Chardonnay"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "La Muà",
@@ -90,14 +186,14 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Medio",
     "flavors": [
-      "Tropical",
-      "Cítrico",
-      "Afrutado"
+      "Afrutado",
+      "Cítrico"
     ],
     "pairings": [
-      "Entrantes",
-      "Arroces",
-      "Marisco"
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Sauvignon Blanc"
@@ -105,7 +201,31 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Valencia",
+    "designationGroup": "D.O. Valencia",
+    "flavorDetails": [
+      "Tropical",
+      "Cítrico",
+      "Afrutado"
+    ],
+    "pairingDetails": [
+      "Entrantes",
+      "Arroces",
+      "Marisco"
+    ],
+    "grapeGroups": [
+      "Sauvignon Blanc"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Marisco",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Sauvignon Blanc"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Cullerot",
@@ -115,17 +235,18 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Medio",
     "flavors": [
-      "Floral",
       "Cítrico",
+      "Floral",
       "Herbáceo",
       "Mineral"
     ],
     "pairings": [
-      "Aperitivos",
-      "Arroces",
       "Pescado",
       "Marisco",
-      "Verduras"
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Macabeo",
@@ -137,7 +258,36 @@ window.WHITE_WINES = [
     "estimated": [
       "Cuerpo",
       "Maridaje"
-    ]
+    ],
+    "designation": "D.O. Valencia",
+    "designationGroup": "D.O. Valencia",
+    "flavorDetails": [
+      "Floral",
+      "Cítrico",
+      "Herbáceo",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Verduras"
+    ],
+    "grapeGroups": [
+      "Malvasía"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Malvasía",
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Clos de Lôm",
@@ -148,14 +298,15 @@ window.WHITE_WINES = [
     "body": "Medio",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Floral"
     ],
     "pairings": [
-      "Aperitivos",
-      "Arroces",
       "Pescado",
-      "Marisco"
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Malvasía"
@@ -163,7 +314,33 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Valencia",
+    "designationGroup": "D.O. Valencia",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Floral"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Arroces",
+      "Pescado",
+      "Marisco"
+    ],
+    "grapeGroups": [
+      "Malvasía"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Malvasía"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Dominio de Calles Verdejo Afrutado",
@@ -173,15 +350,13 @@ window.WHITE_WINES = [
     "sweetness": "Semiseco",
     "body": "Ligero",
     "flavors": [
-      "Afrutado",
-      "Tropical",
-      "Fruta de hueso"
+      "Afrutado"
     ],
     "pairings": [
-      "Entrantes",
-      "Arroces",
       "Marisco",
-      "Carnes blancas"
+      "Carnes",
+      "Verduras",
+      "Marisco / Senyoret"
     ],
     "grapes": [
       "Verdejo"
@@ -189,7 +364,33 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Valencia",
+    "designationGroup": "D.O. Valencia",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Fruta de hueso"
+    ],
+    "pairingDetails": [
+      "Entrantes",
+      "Arroces",
+      "Marisco",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Marisco",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Beio",
@@ -199,23 +400,52 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Con cuerpo",
     "flavors": [
-      "Afrutado",
-      "Tropical",
-      "Fruta de hueso"
+      "Afrutado"
     ],
     "pairings": [
-      "Entrantes",
-      "Pasta",
-      "Arroces",
       "Marisco",
-      "Carnes blancas"
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Godello"
     ],
     "estimated": [
       "Dulzor"
-    ]
+    ],
+    "designation": "Sin D.O. (vino varietal)",
+    "designationGroup": "D.O. Valencia",
+    "zoneGroupingNote": "zona de la bodega Vegamar en Calles (Alto Turia); uva exacta no documentada",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Fruta de hueso"
+    ],
+    "pairingDetails": [
+      "Entrantes",
+      "Pasta",
+      "Arroces",
+      "Marisco",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Godello"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Marisco",
+      "Carnes",
+      "Entrantes",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Godello"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Nebla Chardonnay sobre lías",
@@ -225,23 +455,51 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Con cuerpo",
     "flavors": [
-      "Floral",
       "Afrutado",
-      "Bollería"
+      "Floral",
+      "Tostado"
     ],
     "pairings": [
       "Pescado",
-      "Arroces",
-      "Quesos",
-      "Pasta",
-      "Ensaladas"
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Chardonnay"
     ],
     "estimated": [
       "Dulzor"
-    ]
+    ],
+    "designation": "D.O. Utiel-Requena",
+    "designationGroup": "D.O. Utiel-Requena",
+    "flavorDetails": [
+      "Floral",
+      "Afrutado",
+      "Bollería"
+    ],
+    "pairingDetails": [
+      "Pescado",
+      "Arroces",
+      "Quesos",
+      "Pasta",
+      "Ensaladas"
+    ],
+    "grapeGroups": [
+      "Chardonnay"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Entrantes",
+      "Quesos",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Chardonnay"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Bobal Blanco",
@@ -252,14 +510,14 @@ window.WHITE_WINES = [
     "body": "Medio",
     "flavors": [
       "Afrutado",
-      "Floral",
-      "Fruta roja"
+      "Floral"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Arroces",
-      "Quesos"
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro"
     ],
     "grapes": [
       "Bobal"
@@ -268,7 +526,33 @@ window.WHITE_WINES = [
       "Dulzor",
       "Cuerpo",
       "Maridaje"
-    ]
+    ],
+    "designation": "D.O. Utiel-Requena",
+    "designationGroup": "D.O. Utiel-Requena",
+    "flavorDetails": [
+      "Afrutado",
+      "Floral",
+      "Fruta roja"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Arroces",
+      "Quesos"
+    ],
+    "grapeGroups": [
+      "Otras uvas"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Quesos"
+    ],
+    "grapeGroupsV107": [
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Impromptu Sauvignon Blanc",
@@ -279,10 +563,34 @@ window.WHITE_WINES = [
     "body": "Con cuerpo",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Mineral"
     ],
     "pairings": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ],
+    "grapes": [
+      "Sauvignon Blanc"
+    ],
+    "estimated": [
+      "Cuerpo"
+    ],
+    "designation": "D.O. Utiel-Requena",
+    "designationGroup": "D.O. Utiel-Requena",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Mineral"
+    ],
+    "pairingDetails": [
       "Marisco",
       "Pescado",
       "Arroces",
@@ -290,12 +598,21 @@ window.WHITE_WINES = [
       "Quesos",
       "Carnes blancas"
     ],
-    "grapes": [
+    "grapeGroups": [
       "Sauvignon Blanc"
     ],
-    "estimated": [
-      "Cuerpo"
-    ]
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes",
+      "Quesos"
+    ],
+    "grapeGroupsV107": [
+      "Sauvignon Blanc"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Enrique Mendoza Chardonnay Joven",
@@ -305,14 +622,15 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Medio",
     "flavors": [
-      "Tropical",
+      "Afrutado",
       "Cítrico",
       "Floral"
     ],
     "pairings": [
       "Pescado",
-      "Carnes blancas",
-      "Ensaladas"
+      "Carnes",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Chardonnay"
@@ -320,7 +638,31 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Alicante",
+    "designationGroup": "D.O. Alicante",
+    "flavorDetails": [
+      "Tropical",
+      "Cítrico",
+      "Floral"
+    ],
+    "pairingDetails": [
+      "Pescado",
+      "Carnes blancas",
+      "Ensaladas"
+    ],
+    "grapeGroups": [
+      "Chardonnay"
+    ],
+    "pairingsV107": [
+      "Pescado",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Chardonnay"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Pepe Mendoza Blanco",
@@ -335,11 +677,13 @@ window.WHITE_WINES = [
       "Herbáceo"
     ],
     "pairings": [
-      "Arroces",
-      "Marisco",
       "Pescado",
-      "Carnes blancas",
-      "Verduras"
+      "Marisco",
+      "Carnes",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Moscatel",
@@ -348,7 +692,36 @@ window.WHITE_WINES = [
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Alicante",
+    "designationGroup": "D.O. Alicante",
+    "flavorDetails": [
+      "Cítrico",
+      "Floral",
+      "Herbáceo"
+    ],
+    "pairingDetails": [
+      "Arroces",
+      "Marisco",
+      "Pescado",
+      "Carnes blancas",
+      "Verduras"
+    ],
+    "grapeGroups": [
+      "Moscatel"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Moscatel",
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Marina Alta Colección",
@@ -358,22 +731,50 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Con cuerpo",
     "flavors": [
-      "Floral",
       "Afrutado",
-      "Fruta madura"
+      "Floral"
     ],
     "pairings": [
-      "Jamón",
+      "Pescado",
       "Marisco",
-      "Arroces",
-      "Pescado"
+      "Marisco / Senyoret",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Moscatel de Alejandría"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Alicante",
+    "designationGroup": "D.O. Alicante",
+    "flavorDetails": [
+      "Floral",
+      "Afrutado",
+      "Fruta madura"
+    ],
+    "pairingDetails": [
+      "Jamón",
+      "Marisco",
+      "Arroces",
+      "Pescado"
+    ],
+    "grapeGroups": [
+      "Moscatel"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Moscatel"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Carlos Moro Viña Tenencia",
@@ -387,10 +788,12 @@ window.WHITE_WINES = [
       "Herbáceo"
     ],
     "pairings": [
-      "Marisco",
-      "Pulpo",
       "Pescado",
-      "Quesos"
+      "Marisco",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Treixadura",
@@ -400,7 +803,34 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Ribeiro",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Afrutado",
+      "Herbáceo"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pulpo",
+      "Pescado",
+      "Quesos"
+    ],
+    "grapeGroups": [
+      "Albariño",
+      "Godello"
+    ],
+    "pairingsV107": [
+      "Pescado",
+      "Marisco",
+      "Quesos"
+    ],
+    "grapeGroupsV107": [
+      "Albariño",
+      "Godello",
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Mestizaje Blanco",
@@ -410,16 +840,17 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Medio",
     "flavors": [
-      "Afrutado",
-      "Tropical",
-      "Fruta de hueso"
+      "Afrutado"
     ],
     "pairings": [
-      "Aperitivos",
-      "Arroces",
       "Pescado",
       "Marisco",
-      "Carnes blancas"
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Merseguera",
@@ -428,7 +859,39 @@ window.WHITE_WINES = [
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "Sin D.O. (Vino de España)",
+    "designationGroup": "D.O. Utiel-Requena",
+    "zoneGroupingNote": "zona geográfica Utiel, finca Calvestra; vino legalmente sin D.O.",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Fruta de hueso"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Merseguera",
+      "Malvasía"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Merseguera",
+      "Malvasía",
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Finca Calvestra",
@@ -438,12 +901,42 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Con cuerpo",
     "flavors": [
+      "Cítrico",
+      "Floral",
+      "Mineral"
+    ],
+    "pairings": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Secreto ibérico",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco",
+      "Fesols i naps"
+    ],
+    "grapes": [
+      "Merseguera"
+    ],
+    "estimated": [
+      "Cuerpo"
+    ],
+    "designation": "Sin D.O. (Vino de España)",
+    "designationGroup": "D.O. Utiel-Requena",
+    "zoneGroupingNote": "zona geográfica Utiel, finca Calvestra; vino legalmente sin D.O.",
+    "flavorDetails": [
       "Floral",
       "Mineral",
       "Cítrico",
       "Cremoso"
     ],
-    "pairings": [
+    "pairingDetails": [
       "Aperitivos",
       "Arroces",
       "Pescado",
@@ -451,12 +944,21 @@ window.WHITE_WINES = [
       "Carnes blancas",
       "Quesos"
     ],
-    "grapes": [
+    "grapeGroups": [
       "Merseguera"
     ],
-    "estimated": [
-      "Cuerpo"
-    ]
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes",
+      "Quesos"
+    ],
+    "grapeGroupsV107": [
+      "Merseguera"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Cyatho",
@@ -471,18 +973,48 @@ window.WHITE_WINES = [
       "Mineral"
     ],
     "pairings": [
-      "Aperitivos",
-      "Arroces",
-      "Marisco",
       "Pescado",
-      "Carnes blancas"
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Verdejo"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rueda",
+    "designationGroup": "D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Herbáceo",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Arroces",
+      "Marisco",
+      "Pescado",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "MAGNUM Cyatho",
@@ -497,18 +1029,48 @@ window.WHITE_WINES = [
       "Mineral"
     ],
     "pairings": [
-      "Aperitivos",
-      "Arroces",
-      "Marisco",
       "Pescado",
-      "Carnes blancas"
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Verdejo"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rueda",
+    "designationGroup": "D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Herbáceo",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Arroces",
+      "Marisco",
+      "Pescado",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "De Locos",
@@ -520,15 +1082,15 @@ window.WHITE_WINES = [
     "flavors": [
       "Afrutado",
       "Cítrico",
-      "Anisado"
+      "Herbáceo"
     ],
     "pairings": [
-      "Aperitivos",
-      "Arroces",
       "Pescado",
-      "Frituras",
-      "Ahumados",
-      "Sushi"
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Verdejo"
@@ -536,7 +1098,34 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rueda",
+    "designationGroup": "D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Anisado"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Arroces",
+      "Pescado",
+      "Frituras",
+      "Ahumados",
+      "Sushi"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Marqués de Riscal",
@@ -547,22 +1136,51 @@ window.WHITE_WINES = [
     "body": "Medio",
     "flavors": [
       "Floral",
-      "Herbáceo",
-      "Anisado"
+      "Herbáceo"
     ],
     "pairings": [
       "Pescado",
       "Marisco",
-      "Pasta",
-      "Carnes blancas",
-      "Jamón"
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Verdejo"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rueda",
+    "designationGroup": "D.O. Rueda",
+    "flavorDetails": [
+      "Floral",
+      "Herbáceo",
+      "Anisado"
+    ],
+    "pairingDetails": [
+      "Pescado",
+      "Marisco",
+      "Pasta",
+      "Carnes blancas",
+      "Jamón"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Circe",
@@ -573,16 +1191,16 @@ window.WHITE_WINES = [
     "body": "Ligero",
     "flavors": [
       "Afrutado",
-      "Tropical",
-      "Floral",
       "Cítrico",
+      "Floral",
       "Herbáceo"
     ],
     "pairings": [
-      "Aperitivos",
       "Pescado",
       "Marisco",
-      "Foie"
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Verdejo"
@@ -590,7 +1208,34 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rueda",
+    "designationGroup": "D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Floral",
+      "Cítrico",
+      "Herbáceo"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Pescado",
+      "Marisco",
+      "Foie"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Pescado",
+      "Marisco",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "José Pariente",
@@ -603,10 +1248,36 @@ window.WHITE_WINES = [
       "Afrutado",
       "Cítrico",
       "Herbáceo",
-      "Anisado",
       "Mineral"
     ],
     "pairings": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ],
+    "grapes": [
+      "Verdejo"
+    ],
+    "estimated": [
+      "Cuerpo"
+    ],
+    "designation": "D.O. Rueda",
+    "designationGroup": "D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Herbáceo",
+      "Anisado",
+      "Mineral"
+    ],
+    "pairingDetails": [
       "Aperitivos",
       "Pescado",
       "Marisco",
@@ -615,12 +1286,22 @@ window.WHITE_WINES = [
       "Carnes blancas",
       "Quesos"
     ],
-    "grapes": [
+    "grapeGroups": [
       "Verdejo"
     ],
-    "estimated": [
-      "Cuerpo"
-    ]
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes",
+      "Quesos",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "MAGNUM José Pariente",
@@ -633,10 +1314,36 @@ window.WHITE_WINES = [
       "Afrutado",
       "Cítrico",
       "Herbáceo",
-      "Anisado",
       "Mineral"
     ],
     "pairings": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
+    ],
+    "grapes": [
+      "Verdejo"
+    ],
+    "estimated": [
+      "Cuerpo"
+    ],
+    "designation": "D.O. Rueda",
+    "designationGroup": "D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Herbáceo",
+      "Anisado",
+      "Mineral"
+    ],
+    "pairingDetails": [
       "Aperitivos",
       "Pescado",
       "Marisco",
@@ -645,12 +1352,22 @@ window.WHITE_WINES = [
       "Carnes blancas",
       "Quesos"
     ],
-    "grapes": [
+    "grapeGroups": [
       "Verdejo"
     ],
-    "estimated": [
-      "Cuerpo"
-    ]
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes",
+      "Quesos",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Nebla (Vicente Gandía)",
@@ -661,14 +1378,14 @@ window.WHITE_WINES = [
     "body": "Medio",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Herbáceo"
     ],
     "pairings": [
-      "Arroces",
       "Pescado",
       "Marisco",
-      "Quesos"
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Verdejo"
@@ -676,7 +1393,34 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "I.G.P. Castilla y León",
+    "designationGroup": "D.O. Rueda",
+    "zoneGroupingNote": "zona Rueda según referencias comerciales; procedencia exacta de la parcela no confirmada",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Herbáceo"
+    ],
+    "pairingDetails": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Quesos"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Quesos"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "El Sermón",
@@ -690,9 +1434,10 @@ window.WHITE_WINES = [
       "Herbáceo"
     ],
     "pairings": [
-      "Aperitivos",
       "Pescado",
-      "Arroces"
+      "Verduras",
+      "Marisco / Senyoret",
+      "Plancton y gamba"
     ],
     "grapes": [
       "Verdejo"
@@ -701,7 +1446,31 @@ window.WHITE_WINES = [
       "Dulzor",
       "Cuerpo",
       "Maridaje"
-    ]
+    ],
+    "designation": "I.G.P. Castilla y León",
+    "designationGroup": "D.O. Rueda",
+    "zoneGroupingNote": "zona La Seca (Valladolid), municipio de la D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Herbáceo"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Pescado",
+      "Arroces"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "La Caseta",
@@ -713,14 +1482,21 @@ window.WHITE_WINES = [
     "flavors": [
       "Afrutado",
       "Herbáceo",
-      "Tostado",
-      "Mineral"
+      "Mineral",
+      "Tostado"
     ],
     "pairings": [
-      "Arroces",
       "Pescado",
-      "Carnes blancas",
-      "Setas"
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Secreto ibérico",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Meloso de marisco",
+      "Fesols i naps"
     ],
     "grapes": [
       "Verdejo"
@@ -729,7 +1505,35 @@ window.WHITE_WINES = [
       "Dulzor",
       "Cuerpo",
       "Maridaje"
-    ]
+    ],
+    "designation": "I.G.P. Castilla y León",
+    "designationGroup": "D.O. Rueda",
+    "zoneGroupingNote": "zona La Seca (Valladolid), municipio de la D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Herbáceo",
+      "Tostado",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Arroces",
+      "Pescado",
+      "Carnes blancas",
+      "Setas"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Ossian Ecológico",
@@ -740,22 +1544,59 @@ window.WHITE_WINES = [
     "body": "Con cuerpo",
     "flavors": [
       "Afrutado",
-      "Mineral",
       "Herbáceo",
+      "Mineral",
       "Tostado"
     ],
     "pairings": [
-      "Arroces",
       "Pescado",
-      "Setas",
-      "Carnes blancas"
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Secreto ibérico",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco",
+      "Fesols i naps"
     ],
     "grapes": [
       "Verdejo"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "I.G.P. Castilla y León",
+    "designationGroup": "D.O. Rueda",
+    "zoneGroupingNote": "zona Nieva (Segovia), municipio de la D.O. Rueda",
+    "flavorDetails": [
+      "Afrutado",
+      "Mineral",
+      "Herbáceo",
+      "Tostado"
+    ],
+    "pairingDetails": [
+      "Arroces",
+      "Pescado",
+      "Setas",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Verdejo"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Verdejo"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Viñas del Vero Chardonnay",
@@ -766,14 +1607,13 @@ window.WHITE_WINES = [
     "body": "Con cuerpo",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Cítrico"
     ],
     "pairings": [
-      "Entrantes",
       "Pescado",
+      "Paella valenciana",
       "Verduras",
-      "Cremas"
+      "Marisco / Senyoret"
     ],
     "grapes": [
       "Chardonnay"
@@ -781,7 +1621,31 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Somontano",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Cítrico"
+    ],
+    "pairingDetails": [
+      "Entrantes",
+      "Pescado",
+      "Verduras",
+      "Cremas"
+    ],
+    "grapeGroups": [
+      "Chardonnay"
+    ],
+    "pairingsV107": [
+      "Pescado",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Chardonnay"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Viñas del Vero Colección Gewürztraminer",
@@ -791,16 +1655,12 @@ window.WHITE_WINES = [
     "sweetness": "Semiseco",
     "body": "Medio",
     "flavors": [
+      "Afrutado",
       "Floral",
-      "Tropical",
       "Especiado"
     ],
     "pairings": [
-      "Aperitivos",
-      "Foie",
-      "Ahumados",
-      "Quesos",
-      "Comida asiática"
+      "Pato y foie"
     ],
     "grapes": [
       "Gewürztraminer"
@@ -808,7 +1668,33 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Somontano",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Floral",
+      "Tropical",
+      "Especiado"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Foie",
+      "Ahumados",
+      "Quesos",
+      "Comida asiática"
+    ],
+    "grapeGroups": [
+      "Otras uvas"
+    ],
+    "pairingsV107": [
+      "Entrantes",
+      "Quesos",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "El Zarzal",
@@ -821,13 +1707,18 @@ window.WHITE_WINES = [
       "Afrutado",
       "Cítrico",
       "Floral",
-      "Mineral",
-      "Anisado"
+      "Herbáceo",
+      "Mineral"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Arroces"
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Godello"
@@ -835,7 +1726,33 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Bierzo",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Floral",
+      "Mineral",
+      "Anisado"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Arroces"
+    ],
+    "grapeGroups": [
+      "Godello"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco"
+    ],
+    "grapeGroupsV107": [
+      "Godello"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "La Revelía",
@@ -851,9 +1768,17 @@ window.WHITE_WINES = [
       "Mineral"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Arroces"
+      "Marisco",
+      "Paella valenciana",
+      "Pato y foie",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Godello"
@@ -862,7 +1787,32 @@ window.WHITE_WINES = [
       "Dulzor",
       "Cuerpo",
       "Maridaje"
-    ]
+    ],
+    "designation": "D.O. Bierzo",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Floral",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Arroces"
+    ],
+    "grapeGroups": [
+      "Godello"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco"
+    ],
+    "grapeGroupsV107": [
+      "Godello"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "FyA Bs Semidulce",
@@ -874,14 +1824,10 @@ window.WHITE_WINES = [
     "flavors": [
       "Afrutado",
       "Cítrico",
-      "Floral",
-      "Miel"
+      "Floral"
     ],
     "pairings": [
-      "Aperitivos",
-      "Quesos",
-      "Foie",
-      "Postres"
+      "Pato y foie"
     ],
     "grapes": [
       "Viura",
@@ -889,7 +1835,34 @@ window.WHITE_WINES = [
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O.Ca. Rioja",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Floral",
+      "Miel"
+    ],
+    "pairingDetails": [
+      "Aperitivos",
+      "Quesos",
+      "Foie",
+      "Postres"
+    ],
+    "grapeGroups": [
+      "Malvasía"
+    ],
+    "pairingsV107": [
+      "Entrantes",
+      "Quesos",
+      "Otros platos"
+    ],
+    "grapeGroupsV107": [
+      "Malvasía",
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Don Pedro de Soutomaior",
@@ -906,11 +1879,15 @@ window.WHITE_WINES = [
       "Mineral"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Arroces",
-      "Carnes blancas",
-      "Quesos"
+      "Marisco",
+      "Carnes",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Albariño"
@@ -918,7 +1895,37 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rías Baixas",
+    "designationGroup": "D.O. Rías Baixas",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Floral",
+      "Herbáceo",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Arroces",
+      "Carnes blancas",
+      "Quesos"
+    ],
+    "grapeGroups": [
+      "Albariño"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Quesos"
+    ],
+    "grapeGroupsV107": [
+      "Albariño"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Leneas",
@@ -929,14 +1936,16 @@ window.WHITE_WINES = [
     "body": "Medio",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Mineral"
     ],
     "pairings": [
       "Pescado",
       "Marisco",
-      "Arroces",
-      "Sushi"
+      "Verduras",
+      "Marisco / Senyoret",
+      "Paella bogavante",
+      "Plancton y gamba",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Albariño"
@@ -944,7 +1953,32 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rías Baixas",
+    "designationGroup": "D.O. Rías Baixas",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Pescado",
+      "Marisco",
+      "Arroces",
+      "Sushi"
+    ],
+    "grapeGroups": [
+      "Albariño"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco"
+    ],
+    "grapeGroupsV107": [
+      "Albariño"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Veigadares",
@@ -955,15 +1989,21 @@ window.WHITE_WINES = [
     "body": "Con cuerpo",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Herbáceo",
       "Tostado"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Carnes blancas",
-      "Ahumados"
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Albariño",
@@ -974,7 +2014,35 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rías Baixas",
+    "designationGroup": "D.O. Rías Baixas",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Herbáceo",
+      "Tostado"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Carnes blancas",
+      "Ahumados"
+    ],
+    "grapeGroups": [
+      "Albariño"
+    ],
+    "pairingsV107": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Entrantes"
+    ],
+    "grapeGroupsV107": [
+      "Albariño",
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Mar de Frades",
@@ -985,23 +2053,54 @@ window.WHITE_WINES = [
     "body": "Medio",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Floral",
       "Herbáceo",
       "Mineral"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Arroces",
-      "Sushi"
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Plancton y gamba",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Albariño"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rías Baixas",
+    "designationGroup": "D.O. Rías Baixas",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Floral",
+      "Herbáceo",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Arroces",
+      "Sushi"
+    ],
+    "grapeGroups": [
+      "Albariño"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco"
+    ],
+    "grapeGroupsV107": [
+      "Albariño"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "MAGNUM Mar de Frades",
@@ -1012,23 +2111,54 @@ window.WHITE_WINES = [
     "body": "Medio",
     "flavors": [
       "Afrutado",
-      "Tropical",
       "Floral",
       "Herbáceo",
       "Mineral"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Arroces",
-      "Sushi"
+      "Marisco",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Rojos / Marisco especial",
+      "Plancton y gamba",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Albariño"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rías Baixas",
+    "designationGroup": "D.O. Rías Baixas",
+    "flavorDetails": [
+      "Afrutado",
+      "Tropical",
+      "Floral",
+      "Herbáceo",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Arroces",
+      "Sushi"
+    ],
+    "grapeGroups": [
+      "Albariño"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco"
+    ],
+    "grapeGroupsV107": [
+      "Albariño"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Lusco Pazo Piñeiro",
@@ -1044,17 +2174,52 @@ window.WHITE_WINES = [
       "Tostado"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Carnes blancas",
-      "Arroces"
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Albariño"
     ],
     "estimated": [
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Rías Baixas",
+    "designationGroup": "D.O. Rías Baixas",
+    "flavorDetails": [
+      "Afrutado",
+      "Cítrico",
+      "Mineral",
+      "Tostado"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Carnes blancas",
+      "Arroces"
+    ],
+    "grapeGroups": [
+      "Albariño"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes"
+    ],
+    "grapeGroupsV107": [
+      "Albariño"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Terras do Cigarrón",
@@ -1064,16 +2229,19 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Medio",
     "flavors": [
-      "Floral",
       "Afrutado",
-      "Tropical",
+      "Floral",
       "Especiado"
     ],
     "pairings": [
-      "Arroces",
       "Pescado",
       "Marisco",
-      "Carnes blancas"
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Paella bogavante",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Godello"
@@ -1081,7 +2249,34 @@ window.WHITE_WINES = [
     "estimated": [
       "Dulzor",
       "Cuerpo"
-    ]
+    ],
+    "designation": "D.O. Monterrei",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Floral",
+      "Afrutado",
+      "Tropical",
+      "Especiado"
+    ],
+    "pairingDetails": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes blancas"
+    ],
+    "grapeGroups": [
+      "Godello"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes"
+    ],
+    "grapeGroupsV107": [
+      "Godello"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Louro",
@@ -1092,16 +2287,23 @@ window.WHITE_WINES = [
     "body": "Con cuerpo",
     "flavors": [
       "Cítrico",
-      "Herbáceo",
       "Floral",
+      "Herbáceo",
       "Mineral"
     ],
     "pairings": [
-      "Marisco",
       "Pescado",
-      "Sushi",
-      "Carnes blancas",
-      "Arroces"
+      "Marisco",
+      "Carnes",
+      "Paella valenciana",
+      "Pato y foie",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Paella bogavante",
+      "Meloso bogavante",
+      "Rojos / Marisco especial",
+      "Meloso de rojos",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Godello",
@@ -1110,7 +2312,36 @@ window.WHITE_WINES = [
     "estimated": [
       "Cuerpo",
       "Uva"
-    ]
+    ],
+    "designation": "D.O. Valdeorras",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Cítrico",
+      "Herbáceo",
+      "Floral",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Marisco",
+      "Pescado",
+      "Sushi",
+      "Carnes blancas",
+      "Arroces"
+    ],
+    "grapeGroups": [
+      "Godello"
+    ],
+    "pairingsV107": [
+      "Arroces",
+      "Pescado",
+      "Marisco",
+      "Carnes"
+    ],
+    "grapeGroupsV107": [
+      "Godello",
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   },
   {
     "name": "Gustave Lorentz",
@@ -1120,16 +2351,20 @@ window.WHITE_WINES = [
     "sweetness": "Seco",
     "body": "Medio",
     "flavors": [
-      "Cítrico",
       "Afrutado",
+      "Cítrico",
       "Floral",
       "Mineral"
     ],
     "pairings": [
       "Pescado",
       "Marisco",
-      "Carnes blancas",
-      "Quesos"
+      "Carnes",
+      "Paella valenciana",
+      "Verduras",
+      "Marisco / Senyoret",
+      "Arroz negro",
+      "Meloso de marisco"
     ],
     "grapes": [
       "Riesling"
@@ -1137,6 +2372,33 @@ window.WHITE_WINES = [
     "estimated": [
       "Cuerpo",
       "Referencia"
-    ]
+    ],
+    "designation": "A.O.C. Alsace",
+    "designationGroup": "Otras denominaciones",
+    "flavorDetails": [
+      "Cítrico",
+      "Afrutado",
+      "Floral",
+      "Mineral"
+    ],
+    "pairingDetails": [
+      "Pescado",
+      "Marisco",
+      "Carnes blancas",
+      "Quesos"
+    ],
+    "grapeGroups": [
+      "Otras uvas"
+    ],
+    "pairingsV107": [
+      "Pescado",
+      "Marisco",
+      "Carnes",
+      "Quesos"
+    ],
+    "grapeGroupsV107": [
+      "Otras uvas"
+    ],
+    "ricePairingsEstimated": true
   }
 ];

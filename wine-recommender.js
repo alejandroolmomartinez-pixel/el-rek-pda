@@ -1,31 +1,30 @@
-/* El Rek PDA v10.6 · Recomendador exclusivo de blancos.
+/* El Rek PDA v10.9 · Recomendador exclusivo de blancos.
    No modifica los pedidos, el almacenamiento ni las categorías existentes. */
 const WHITE_WINE_FILTERS = [
-  {key:'origin', label:'Procedencia'},
+  {key:'designationGroup', label:'Denominación de origen (zona)'},
   {key:'price', label:'Precio'},
   {key:'sweetness', label:'Dulzor'},
   {key:'body', label:'Cuerpo'},
   {key:'flavors', label:'Sabor'},
   {key:'pairings', label:'Maridaje'},
-  {key:'grapes', label:'Uva'}
+  {key:'grapeGroups', label:'Uva'}
 ];
 const WHITE_WINE_OPTIONS = {
-  origin:['Valencia y alrededores','Alicante','Rueda','Castilla y León','Ribeiro','Somontano','Bierzo','Rioja','Rías Baixas','Monterrei','Valdeorras','Alsacia'],
+  designationGroup:['D.O. Valencia','D.O. Utiel-Requena','D.O. Alicante','D.O. Rueda','D.O. Rías Baixas','Otras denominaciones'],
   sweetness:['Seco','Semiseco','Semidulce','Dulce'],
   body:['Ligero','Medio','Con cuerpo'],
-  flavors:[], pairings:[], grapes:[]
+  flavors:['Afrutado','Cítrico','Floral','Herbáceo','Mineral','Especiado','Tostado'],
+  pairings:['Pescado','Marisco','Carnes','Paella valenciana','Pato y foie','Secreto ibérico','Verduras','Marisco / Senyoret','Arroz negro','Paella bogavante','Meloso bogavante','Rojos / Marisco especial','Meloso de rojos','Plancton y gamba','Meloso de marisco','Fesols i naps'],
+  grapeGroups:['Verdejo','Albariño','Godello','Chardonnay','Merseguera','Malvasía','Moscatel','Sauvignon Blanc','Otras uvas']
 };
-for(const field of ['flavors','pairings','grapes']){
- WHITE_WINE_OPTIONS[field]=[...new Set(window.WHITE_WINES.flatMap(w=>w[field]))].sort((a,b)=>a.localeCompare(b,'es'));
-}
-function whiteWineEmptyFilters(){return {origin:[],price:null,sweetness:[],body:[],flavors:[],pairings:[],grapes:[]}}
-function whiteWineFiltersCopy(f){return {...whiteWineEmptyFilters(),...f,origin:[...(f.origin||[])],sweetness:[...(f.sweetness||[])],body:[...(f.body||[])],flavors:[...(f.flavors||[])],pairings:[...(f.pairings||[])],grapes:[...(f.grapes||[])]}}
+function whiteWineEmptyFilters(){return {designationGroup:[],price:null,sweetness:[],body:[],flavors:[],pairings:[],grapeGroups:[]}}
+function whiteWineFiltersCopy(f){return {...whiteWineEmptyFilters(),...f,designationGroup:[...(f.designationGroup||[])],sweetness:[...(f.sweetness||[])],body:[...(f.body||[])],flavors:[...(f.flavors||[])],pairings:[...(f.pairings||[])],grapeGroups:[...(f.grapeGroups||[])]}}
 function whiteWineHasField(f,key){return key==='price' ? Number.isFinite(f.price)&&f.price>0 : (f[key]||[]).length>0}
 function whiteWineMatches(w,f){
  if(whiteWineHasField(f,'price')&&w.price>f.price)return false;
- for(const key of ['origin','sweetness','body','flavors','pairings','grapes']){
+ for(const key of ['designationGroup','sweetness','body','flavors','pairings','grapeGroups']){
   if(!whiteWineHasField(f,key))continue;
-  if(key==='origin'||key==='sweetness'||key==='body'){
+  if(key==='designationGroup'||key==='sweetness'||key==='body'){
    if(!f[key].includes(w[key]))return false;
   }else if(!f[key].every(value=>w[key].includes(value)))return false;
  }
@@ -33,20 +32,20 @@ function whiteWineMatches(w,f){
 }
 function whiteWineRemainingLine(w,f){
  const displayed={
-  origin:w.region,
+  designationGroup:w.designation,
   price:`${w.price} €`,
   sweetness:w.sweetness,
   body:w.body,
   flavors:w.flavors.join(', '),
   pairings:w.pairings.join(', '),
-  grapes:w.grapes.join(', ')
+  grapeGroups:w.grapes.join(', ')
  };
  return WHITE_WINE_FILTERS.filter(o=>!whiteWineHasField(f,o.key)).map(o=>displayed[o.key]).join(' · ');
 }
 function whiteWineSelectedCount(f){return WHITE_WINE_FILTERS.filter(o=>whiteWineHasField(f,o.key)).length}
 function goWhiteWineRecommender(){const v=currentView();push({type:'wine-recommend',table:v.table,filters:whiteWineEmptyFilters()})}
 function openWhiteWineFilters(){const v=currentView();push({type:'wine-filters',table:v.table,draft:whiteWineFiltersCopy(v.filters)})}
-function whiteWineSetDraftValue(field,value){const v=currentView();if(v.type!=='wine-filters')return;const values=v.draft[field];const i=values.indexOf(value);if(i!==-1)values.splice(i,1);else if(['origin','sweetness','body'].includes(field)){v.draft[field]=[value]}else values.push(value);render()}
+function whiteWineSetDraftValue(field,value){const v=currentView();if(v.type!=='wine-filters')return;const values=v.draft[field];const i=values.indexOf(value);if(i!==-1)values.splice(i,1);else if(['designationGroup','sweetness','body'].includes(field)){v.draft[field]=[value]}else values.push(value);render()}
 function whiteWineApplyFilters(){const v=currentView();if(v.type!=='wine-filters')return;const num=document.querySelector('#white-wine-max-price');if(num){const val=num.value.trim();v.draft.price=val===''?null:Number(val);if(v.draft.price!==null&&(!Number.isFinite(v.draft.price)||v.draft.price<=0)){v.draft.price=null}}
  const previous=nav[nav.length-2];if(previous&&previous.type==='wine-recommend')previous.filters=whiteWineFiltersCopy(v.draft);
  nav.pop();render();
@@ -54,13 +53,13 @@ function whiteWineApplyFilters(){const v=currentView();if(v.type!=='wine-filters
 function whiteWineClearFilters(){const v=currentView();if(v.type==='wine-recommend'){v.filters=whiteWineEmptyFilters();render()}else if(v.type==='wine-filters'){v.draft=whiteWineEmptyFilters();render()}}
 function whiteWineFiltersSummary(f){
  const labels=[];
- if(f.origin.length)labels.push('Procedencia: '+f.origin.join(', '));
+ if(f.designationGroup.length)labels.push('Zona: '+f.designationGroup.join(', '));
  if(whiteWineHasField(f,'price'))labels.push('Hasta '+f.price+' €');
  if(f.sweetness.length)labels.push('Dulzor: '+f.sweetness.join(', '));
  if(f.body.length)labels.push('Cuerpo: '+f.body.join(', '));
  if(f.flavors.length)labels.push('Sabor: '+f.flavors.join(', '));
  if(f.pairings.length)labels.push('Maridaje: '+f.pairings.join(', '));
- if(f.grapes.length)labels.push('Uva: '+f.grapes.join(', '));
+ if(f.grapeGroups.length)labels.push('Uva: '+f.grapeGroups.join(', '));
  return labels.join(' · ');
 }
 function renderWhiteWineRecommender(v){
@@ -75,13 +74,17 @@ function renderWhiteWineRecommender(v){
 }
 function renderWhiteWineFilters(v){
  const f=v.draft;
- let h=titleBar('Filtrar blancos')+'<p class="wine-filter-help">Elige solo lo que necesites. Todos los criterios seleccionados deben cumplirse; puedes marcar varios sabores, maridajes y uvas.</p>';
+ let h=titleBar('Filtrar blancos')+'<p class="wine-filter-help">Elige solo lo que necesites. Todos los criterios seleccionados deben cumplirse; puedes marcar varios sabores, maridajes y grupos de uvas. El filtro por zona incluye vinos elaborados en la región aunque su etiqueta legal sea I.G.P. o Vino de España; la denominación real se conserva en cada ficha. «Otras uvas» incluye solo Bobal, Gewürztraminer y Riesling. Los maridajes por arroz son recomendaciones orientativas para la carta de El Rek.</p>';
  for(const {key,label} of WHITE_WINE_FILTERS){
   h+=`<section class="wine-filter-section"><h2>${label}</h2>`;
   if(key==='price'){
    h+=`<label class="wine-price-label" for="white-wine-max-price">Precio máximo (€)</label><input id="white-wine-max-price" class="wine-price-input" type="number" min="1" step="1" inputmode="numeric" placeholder="Sin límite" value="${f.price??''}" oninput="currentView().draft.price=this.value===''?null:Number(this.value)">`;
   }else{
-   h+=`<div class="wine-filter-options">${WHITE_WINE_OPTIONS[key].map(option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`).join('')}</div>`;
+   if(key==='pairings'){
+    const optButton=option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`;
+    h+=`<div class="wine-filter-subheading">Platos</div><div class="wine-filter-options">${WHITE_WINE_OPTIONS.pairings.slice(0,3).map(optButton).join('')}</div>`;
+    h+=`<div class="wine-filter-subheading">Arroces y fideuás de nuestra carta</div><div class="wine-filter-options">${WHITE_WINE_OPTIONS.pairings.slice(3).map(optButton).join('')}</div>`;
+   }else h+=`<div class="wine-filter-options">${WHITE_WINE_OPTIONS[key].map(option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`).join('')}</div>`;
   }
   h+='</section>';
  }

@@ -125,3 +125,7 @@ body{overscroll-behavior:none}
 .wine-filter-reset,.wine-filter-submit{border:0;border-radius:12px;min-height:45px;font-size:15px;font-weight:850}
 .wine-filter-reset{background:#ececee;color:#222}
 .wine-filter-submit{background:#33121a;color:#fff}
+
+/* v10.8: separación visual entre platos y tipos de arroz en maridaje */
+.wine-filter-subheading {font-size: .75rem; font-weight:700; color:var(--muted,#666); margin: .85rem 0 .45rem; letter-spacing: .01em;}
+.wine-filter-subheading:first-of-type {margin-top:.2rem;}
