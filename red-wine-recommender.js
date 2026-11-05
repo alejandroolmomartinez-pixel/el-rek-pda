@@ -34,10 +34,18 @@ function redWineMatches(w,f){
   return true;
 }
 function redWineRemainingLine(w,f){
-  const fields={designationGroup:w.designation,price:`${w.price} €`,sweetness:w.sweetness,
+  const fields={designationGroup:w.designation,sweetness:w.sweetness,
     body:w.body,flavors:w.flavors.join(', '),aging:w.aging,
     pairings:w.pairings.join(', '),grapeGroups:w.grapes.join(', ')};
-  return RED_WINE_FILTERS.filter(x=>!redWineHasField(f,x.key)).map(x=>fields[x.key]).join(' · ');
+  // El precio se muestra alineado con el nombre en la cabecera de cada vino.
+  // Mostrar la denominación o uvas exactas si el vino coincidió por «Otras».
+  return RED_WINE_FILTERS.filter(x=>{
+    if(x.key==='price')return false;
+    if(!redWineHasField(f,x.key))return true;
+    if(x.key==='designationGroup')return f.designationGroup.includes('Otras denominaciones')&&w.designationGroup==='Otras denominaciones';
+    if(x.key==='grapeGroups')return f.grapeGroups.includes('Otras uvas')&&w.grapeGroups.includes('Otras uvas');
+    return false;
+  }).map(x=>fields[x.key]).join(' · ');
 }
 function redWineSelectedCount(f){return RED_WINE_FILTERS.filter(x=>redWineHasField(f,x.key)).length}
 function goRedWineRecommender(){const v=currentView();push({type:'red-wine-recommend',table:v.table,filters:redWineEmptyFilters()})}
@@ -69,7 +77,7 @@ function renderRedWineRecommender(v){
   if(redWineSelectedCount(f))h+=`<p class="wine-active-filters">${esc(redWineFiltersSummary(f))}</p>`;
   h+=`<div class="wine-rec-count">${matched.length} ${matched.length===1?'vino':'vinos'} de ${window.RED_WINES.length}</div>`;
   if(!matched.length)h+='<div class="wine-rec-empty">No hay tintos que cumplan todos los filtros. Prueba a quitar alguno.</div>';
-  else h+=`<div class="wine-rec-list">${matched.map(w=>`<article class="wine-rec-item${isUnavailable(w.name)?' is-soldout':''}"><div class="wine-rec-name">${esc(w.name)}${isUnavailable(w.name)?'<span class="wine-rec-soldout">AGOTADO</span>':''}</div><p class="wine-rec-details">${esc(redWineRemainingLine(w,f)||'Cumple todos los filtros seleccionados')}</p></article>`).join('')}</div>`;
+  else h+=`<div class="wine-rec-list">${matched.map(w=>`<article class="wine-rec-item${isUnavailable(w.name)?' is-soldout':''}"><div class="wine-rec-heading"><div class="wine-rec-name">${esc(w.name)}${isUnavailable(w.name)?'<span class="wine-rec-soldout">AGOTADO</span>':''}</div><div class="wine-rec-price">${esc(w.price)} €</div></div><p class="wine-rec-details">${esc(redWineRemainingLine(w,f)||'Cumple todos los filtros seleccionados')}</p></article>`).join('')}</div>`;
   return h;
 }
 function renderRedWineFilters(v){

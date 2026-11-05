@@ -108,7 +108,10 @@ body{overscroll-behavior:none}
 .wine-rec-count{font-size:12px;font-weight:700;color:#777;margin:10px 2px}
 .wine-rec-list{display:flex;flex-direction:column;gap:9px;padding-bottom:110px}
 .wine-rec-item{background:#f0dfad;border:1px solid #e0ce96;border-radius:12px;padding:11px 12px}
-.wine-rec-name{font-size:15px;font-weight:850;color:#3a2c0b;margin:0 0 5px}
+.wine-rec-heading{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 5px}
+.wine-rec-name,.wine-rec-price{font-size:15px;font-weight:850;color:#3a2c0b;line-height:1.3}
+.wine-rec-name{flex:1;min-width:0;overflow-wrap:break-word}
+.wine-rec-price{flex:0 0 auto;white-space:nowrap;text-align:right}
 .wine-rec-details{font-size:12px;line-height:1.48;color:#594a25;margin:0;overflow-wrap:break-word}
 .wine-rec-soldout{font-size:10px;color:#b3261e;margin-left:9px;font-weight:800}
 .wine-rec-item.is-soldout{opacity:.65}
@@ -141,7 +144,7 @@ body{overscroll-behavior:none}
 /* v10.11 — Tintos: mismo granate que en la carta de productos (#33121a). */
 .wine-recommend-trigger.red-wine-trigger{background:#33121a;color:#fff;border-color:#33121a}
 .wine-red .wine-rec-item{background:#33121a;border-color:#33121a}
-.wine-red .wine-rec-name,.wine-red .wine-rec-details{color:#fff}
+.wine-red .wine-rec-name,.wine-red .wine-rec-price,.wine-red .wine-rec-details{color:#fff}
 .wine-red .wine-rec-details{opacity:.90}
 .wine-red .wine-rec-soldout{color:#ffd5d5}
 .wine-red .wine-apply-btn,.wine-red .wine-filter-submit{background:#33121a;color:#fff;box-shadow:0 1px 0 #14070a}
