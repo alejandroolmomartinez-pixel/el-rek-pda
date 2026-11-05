@@ -1,0 +1,23 @@
+EL REK PDA — DATOS Y FILTROS DEL RECOMENDADOR DE BLANCOS (V10.6)
+
+42 referencias, 7 criterios y 3 Magnum.
+
+Cada vino tiene:
+  name       Nombre igual al del menú original de la PDA
+  region     Procedencia mostrada
+  origin     Zona agrupada para el filtro
+  price      Precio de la carta, botella o Magnum, en euros
+  sweetness  Seco / Semiseco / Semidulce
+  body       Ligero / Medio / Con cuerpo
+  flavors    Varios sabores posibles
+  pairings   Varios maridajes posibles
+  grapes     Varias uvas posibles
+  estimated  Campos con interpretación, estimación o verificación pendiente
+
+El recomendador cruza los filtros y no necesita conexión a internet.
+Los precios son de la carta de verano 2026 y podrían cambiar.
+
+IMPORTANTES: se ha completado una clasificación OPERATIVA, no se han
+obtenido los análisis técnicos de las 42 botellas y añadas exactas.
+Conserva el campo `estimated` antes de utilizar como hechos
+certificados las propiedades de una añada.

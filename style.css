@@ -96,3 +96,32 @@ body{overscroll-behavior:none}
 
 /* Principal listo para sacar tras servir todos los entrantes */
 .table.ready-main{background:#C76A32;color:#fff}
+
+/* v10.6 - Recomendador de blancos: conserva la pantalla de pedido existente. */
+.wine-search-with-recommend{display:flex;gap:8px;align-items:center}
+.wine-search-with-recommend .search-wrap{flex:1;min-width:0}
+.wine-recommend-trigger{border:1px solid #ddd;background:#f0dfad;color:#3a2c0b;border-radius:12px;padding:11px 9px;min-height:43px;font-size:12px;font-weight:800;white-space:nowrap;margin-top:8px}
+.wine-rec-actions{display:flex;align-items:center;gap:10px;margin:14px 0 10px}
+.wine-apply-btn{background:#33121a;color:#fff;border:0;border-radius:11px;padding:11px 14px;font-size:13px;font-weight:800}
+.wine-clear-btn{background:#f3f3f4;color:#333;border:0;border-radius:11px;padding:11px 12px;font-size:13px;font-weight:700}
+.wine-active-filters{font-size:12px;line-height:1.45;color:#555;margin:2px 1px 12px}
+.wine-rec-count{font-size:12px;font-weight:700;color:#777;margin:10px 2px}
+.wine-rec-list{display:flex;flex-direction:column;gap:9px;padding-bottom:110px}
+.wine-rec-item{background:#fff;border:1px solid #e5d9dc;border-radius:12px;padding:11px 12px}
+.wine-rec-name{font-size:15px;font-weight:850;color:#291019;margin:0 0 5px}
+.wine-rec-details{font-size:12px;line-height:1.48;color:#595257;margin:0;overflow-wrap:break-word}
+.wine-rec-soldout{font-size:10px;color:#b3261e;margin-left:9px;font-weight:800}
+.wine-rec-item.is-soldout{opacity:.65}
+.wine-rec-empty{padding:38px 12px;text-align:center;color:#666}
+.wine-filter-help{font-size:13px;line-height:1.5;color:#666;margin:14px 2px}
+.wine-filter-section{margin:0 0 15px;padding-bottom:15px;border-bottom:1px solid #eee}
+.wine-filter-section h2{font-size:15px;font-weight:850;margin:0 0 10px}
+.wine-filter-options{display:flex;flex-wrap:wrap;gap:7px}
+.wine-filter-chip{border:1px solid #d5d5d5;background:#f8f8f8;border-radius:999px;padding:8px 11px;font-size:13px;color:#222;min-height:36px;font-weight:650}
+.wine-filter-chip.chosen{background:#33121a;color:#fff;border-color:#33121a}
+.wine-price-label{display:block;font-size:12px;color:#555;margin-bottom:5px}
+.wine-price-input{width:min(220px,100%);padding:11px 13px;font-size:16px;border:1px solid #bbb;border-radius:10px;background:#fff}
+.wine-filter-footer{position:sticky;bottom:calc(70px + env(safe-area-inset-bottom));background:#fffe;padding:12px 0;display:grid;grid-template-columns:1fr 2fr;gap:10px;border-top:1px solid #eee;z-index:6;margin-top:15px}
+.wine-filter-reset,.wine-filter-submit{border:0;border-radius:12px;min-height:45px;font-size:15px;font-weight:850}
+.wine-filter-reset{background:#ececee;color:#222}
+.wine-filter-submit{background:#33121a;color:#fff}

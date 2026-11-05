@@ -71,6 +71,8 @@ function render(){
  if(v.type==="groups")html+=renderGroups(v);
  if(v.type==="groupitems")html+=renderGroupItems(v);
  if(v.type==="outside")html+=renderOutside(v.table);
+ if(v.type==="wine-recommend")html+=renderWhiteWineRecommender(v);
+ if(v.type==="wine-filters")html+=renderWhiteWineFilters(v);
  const tn=tableContextNumber(v);
  if(tn)html+=tableNav(tn,v.type==="table"?"order":(v.type==="categories"?"search":""));
  html+=`</main>`;document.querySelector("#app").innerHTML=html;
@@ -229,7 +231,7 @@ function coffeeClass(name){return name==="Infusiones"?"coffee-infusion":name.inc
 function renderProducts(v){
  const cat=categories.find(c=>c.id===v.cat),list=products[v.cat]||[];
  let h=titleBar(cat.name);
- if(cat.wine)h+=`<div class="search-wrap"><input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value);toggleSearchClear(this)"><button class="search-clear" type="button" aria-label="Borrar búsqueda" onclick="clearProductSearch()">×</button></div>`;
+ if(cat.wine){const wineSearch=`<div class="search-wrap"><input class="search" id="wineSearch" placeholder="Buscar ${cat.name.toLowerCase()}…" oninput="filterWine(this.value);toggleSearchClear(this)"><button class="search-clear" type="button" aria-label="Borrar búsqueda" onclick="clearProductSearch()">×</button></div>`;h+=v.cat==="blancos"?`<div class="wine-search-with-recommend">${wineSearch}<button class="wine-recommend-trigger" onclick="goWhiteWineRecommender()">Recomendar</button></div>`:wineSearch;}
  h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:(v.cat==="bebidas"?drinkClass(p.name):v.cat==="cafes"?coffeeClass(p.name):""))).join("")}</div>`;return h
 }
 function filterWine(q,remember=true){if(remember&&currentView().type==="products")currentView().wineSearch=q;q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
