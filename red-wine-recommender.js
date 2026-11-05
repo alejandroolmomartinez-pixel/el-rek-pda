@@ -21,6 +21,14 @@ const RED_WINE_OPTIONS = {
   pairings:['Pescado','Marisco','Carnes','Marisco y bogavante','Negro, rojos y plancton','Valenciana y secreto','Pato, foie y fesols','Verduras'],
   grapeGroups:['Tempranillo','Bobal','Garnacha','Syrah','Monastrell','Merlot','Cabernet Sauvignon','Pinot Noir','Malbec','Otras uvas']
 };
+// Cada botón se muestra si EXISTE algún tinto de esa opción en el catálogo.
+// No se borran opciones del sistema ni depende de otros filtros activos.
+function redWineAvailableOptions(key){
+  return RED_WINE_OPTIONS[key].filter(option=>(window.RED_WINES||[]).some(w=>{
+    const values=Array.isArray(w[key])?w[key]:[w[key]];
+    return values.includes(option);
+  }));
+}
 function redWineEmptyFilters(){return {designationGroup:[],price:null,sweetness:[],body:[],flavors:[],aging:[],pairings:[],grapeGroups:[]}}
 function redWineFiltersCopy(f){const out=redWineEmptyFilters();for(const k of Object.keys(out))out[k]=k==='price'?(f?.price??null):[...(f?.[k]||[])];return out}
 function redWineHasField(f,key){return key==='price'?Number.isFinite(f.price)&&f.price>0:(f[key]||[]).length>0}
@@ -84,14 +92,18 @@ function renderRedWineFilters(v){
   const f=v.draft;
   let h=titleBar('Filtrar tintos')+'<p class="wine-filter-help">Puedes marcar varias opciones de un mismo filtro. En cada categoría basta con cumplir UNA de las opciones marcadas; entre categorías deben cumplirse TODAS. El precio es un máximo. La D.O. agrupa zonas cercanas, sin modificar la denominación legal. Los maridajes con arroces son orientativos.</p>';
   for(const {key,label} of RED_WINE_FILTERS){
+    const available=key==='price'?[]:redWineAvailableOptions(key);
+    if(key!=='price'&&!available.length)continue;
     h+=`<section class="wine-filter-section"><h2>${label}</h2>`;
     if(key==='price')h+=`<label class="wine-price-label" for="red-wine-max-price">Precio máximo (€)</label><input id="red-wine-max-price" class="wine-price-input" type="number" min="1" step="1" inputmode="numeric" placeholder="Sin límite" value="${f.price??''}" oninput="currentView().draft.price=this.value===''?null:Number(this.value)">`;
     else{
       const button=x=>`<button class="wine-filter-chip${f[key].includes(x)?' chosen':''}" aria-pressed="${f[key].includes(x)}" onclick="redWineSetDraftValue('${key}','${jsq(x)}')">${esc(x)}</button>`;
       if(key==='pairings'){
-        h+='<div class="wine-filter-subheading">Platos</div><div class="wine-filter-options">'+RED_WINE_OPTIONS.pairings.slice(0,3).map(button).join('')+'</div>';
-        h+='<div class="wine-filter-subheading">Arroces y fideuás de nuestra carta</div><div class="wine-filter-options">'+RED_WINE_OPTIONS.pairings.slice(3).map(button).join('')+'</div>';
-      }else h+='<div class="wine-filter-options">'+RED_WINE_OPTIONS[key].map(button).join('')+'</div>';
+        const dishes=available.filter(option=>RED_WINE_OPTIONS.pairings.indexOf(option)<3);
+        const rices=available.filter(option=>RED_WINE_OPTIONS.pairings.indexOf(option)>=3);
+        if(dishes.length)h+='<div class="wine-filter-subheading">Platos</div><div class="wine-filter-options">'+dishes.map(button).join('')+'</div>';
+        if(rices.length)h+='<div class="wine-filter-subheading">Arroces y fideuás de nuestra carta</div><div class="wine-filter-options">'+rices.map(button).join('')+'</div>';
+      }else h+='<div class="wine-filter-options">'+available.map(button).join('')+'</div>';
     }
     h+='</section>';
   }

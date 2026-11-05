@@ -17,6 +17,15 @@ const WHITE_WINE_OPTIONS = {
   pairings:['Pescado','Marisco','Carnes','Marisco y bogavante','Negro, rojos y plancton','Valenciana y secreto','Pato, foie y fesols','Verduras'],
   grapeGroups:['Verdejo','Albariño','Godello','Chardonnay','Merseguera','Malvasía','Moscatel','Sauvignon Blanc','Otras uvas']
 };
+// Solo mostrar opciones con al menos un blanco en TODO el catálogo.
+// La lista original de opciones se conserva sin modificar; otras selecciones
+ // activas no reducen ni ocultan aquí los botones disponibles.
+function whiteWineAvailableOptions(key){
+ return WHITE_WINE_OPTIONS[key].filter(option=>(window.WHITE_WINES||[]).some(w=>{
+  const values=Array.isArray(w[key])?w[key]:[w[key]];
+  return values.includes(option);
+ }));
+}
 function whiteWineEmptyFilters(){return {designationGroup:[],price:null,sweetness:[],body:[],flavors:[],pairings:[],grapeGroups:[]}}
 function whiteWineFiltersCopy(f){return {...whiteWineEmptyFilters(),...f,designationGroup:[...(f.designationGroup||[])],sweetness:[...(f.sweetness||[])],body:[...(f.body||[])],flavors:[...(f.flavors||[])],pairings:[...(f.pairings||[])],grapeGroups:[...(f.grapeGroups||[])]}}
 function whiteWineHasField(f,key){return key==='price' ? Number.isFinite(f.price)&&f.price>0 : (f[key]||[]).length>0}
@@ -85,15 +94,19 @@ function renderWhiteWineFilters(v){
  const f=v.draft;
  let h=titleBar('Filtrar blancos')+'<p class="wine-filter-help">Puedes marcar varias opciones dentro de cualquier filtro: por ejemplo, «Semiseco» y «Semidulce». Dentro de un mismo filtro basta con cumplir UNA de las opciones; entre distintos filtros deben cumplirse TODOS. El precio indica un máximo. La zona agrupa vinos cercanos aunque no tengan esa D.O. legal. Los maridajes de arroces son recomendaciones orientativas.</p>';
  for(const {key,label} of WHITE_WINE_FILTERS){
+  const available=key==='price'?[]:whiteWineAvailableOptions(key);
+  if(key!=='price'&&!available.length)continue;
   h+=`<section class="wine-filter-section"><h2>${label}</h2>`;
   if(key==='price'){
    h+=`<label class="wine-price-label" for="white-wine-max-price">Precio máximo (€)</label><input id="white-wine-max-price" class="wine-price-input" type="number" min="1" step="1" inputmode="numeric" placeholder="Sin límite" value="${f.price??''}" oninput="currentView().draft.price=this.value===''?null:Number(this.value)">`;
   }else{
    if(key==='pairings'){
     const optButton=option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" aria-label="${esc(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`;
-    h+=`<div class="wine-filter-subheading">Platos</div><div class="wine-filter-options">${WHITE_WINE_OPTIONS.pairings.slice(0,3).map(optButton).join('')}</div>`;
-    h+=`<div class="wine-filter-subheading">Arroces y fideuás de nuestra carta</div><div class="wine-filter-options">${WHITE_WINE_OPTIONS.pairings.slice(3).map(optButton).join('')}</div>`;
-   }else h+=`<div class="wine-filter-options">${WHITE_WINE_OPTIONS[key].map(option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" aria-label="${esc(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`).join('')}</div>`;
+    const dishes=available.filter(option=>WHITE_WINE_OPTIONS.pairings.indexOf(option)<3);
+    const rices=available.filter(option=>WHITE_WINE_OPTIONS.pairings.indexOf(option)>=3);
+    if(dishes.length)h+=`<div class="wine-filter-subheading">Platos</div><div class="wine-filter-options">${dishes.map(optButton).join('')}</div>`;
+    if(rices.length)h+=`<div class="wine-filter-subheading">Arroces y fideuás de nuestra carta</div><div class="wine-filter-options">${rices.map(optButton).join('')}</div>`;
+   }else h+=`<div class="wine-filter-options">${available.map(option=>`<button class="wine-filter-chip${f[key].includes(option)?' chosen':''}" aria-pressed="${f[key].includes(option)}" aria-label="${esc(option)}" onclick="whiteWineSetDraftValue('${key}','${jsq(option)}')">${esc(option)}</button>`).join('')}</div>`;
   }
   h+='</section>';
  }
