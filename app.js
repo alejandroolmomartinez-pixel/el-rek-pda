@@ -239,6 +239,24 @@ function renderProducts(v){
  h+=`<div class="product-grid" id="productGrid">${list.map((p,i)=>productBtn(p.name,`selectProduct(${v.table},'${v.cat}',${i})`,cat.wine?"wine wine-"+cat.id:(v.cat==="bebidas"?drinkClass(p.name):v.cat==="cafes"?coffeeClass(p.name):""))).join("")}</div>`;return h
 }
 function filterWine(q,remember=true){if(remember&&currentView().type==="products")currentView().wineSearch=q;q=normalizeSearch(q);document.querySelectorAll("#productGrid .product").forEach(b=>b.style.display=normalizeSearch(b.textContent.replace("AGOTADO","")).includes(q)?"":"none")}
+// Seleccionar desde Recomendar reutiliza el flujo original de productos.
+function addRecommendedWine(category,name){
+ const screenFor={blancos:'wine-recommend',tintos:'red-wine-recommend',rosados:'rose-wine-recommend'};
+ const v=currentView();
+ if(!Object.prototype.hasOwnProperty.call(screenFor,category)||v.type!==screenFor[category])return;
+ const t=table(v.table);
+ if(!t||t.diners==null||t.paid||isUnavailable(name))return;
+ const idx=(products[category]||[]).findIndex(p=>p.name===name);
+ if(idx<0)return;
+ selectProduct(v.table,category,idx);
+}
+// Una tarjeta de recomendación es un botón de pedido, no una pantalla nueva.
+function wineRecommendationCard(w,v,details,category){
+ const soldout=isUnavailable(w.name);
+ const action=soldout?'disabled aria-disabled="true"':`onclick="addRecommendedWine('${category}','${esc(jsq(w.name))}')"`;
+ const label=soldout?`Agotado: ${w.name}`:`Añadir ${w.name} al pedido de la Mesa ${v.table}`;
+ return `<button type="button" class="wine-rec-item${soldout?' is-soldout':''}" ${action} aria-label="${esc(label)}"><span class="wine-rec-heading"><span class="wine-rec-name">${esc(w.name)}${soldout?'<span class="wine-rec-soldout">AGOTADO</span>':''}</span><span class="wine-rec-price">${esc(w.price)} €</span></span><span class="wine-rec-details">${esc(details||'Cumple todos los filtros seleccionados')}</span></button>`;
+}
 function selectProduct(n,cat,i){
  const p=products[cat][i];
  if(cat==="cafes" && p.children)return push({type:"children",table:n,title:p.name,items:p.children,coffee:true});

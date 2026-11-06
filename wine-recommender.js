@@ -86,8 +86,9 @@ function renderWhiteWineRecommender(v){
  h+=`<div class="wine-rec-actions"><button class="wine-apply-btn" onclick="openWhiteWineFilters()">Aplicar filtros${whiteWineSelectedCount(f)?` (${whiteWineSelectedCount(f)})`:''}</button>${whiteWineSelectedCount(f)?'<button class="wine-clear-btn" onclick="whiteWineClearFilters()">Quitar filtros</button>':''}</div>`;
  if(whiteWineSelectedCount(f))h+=`<p class="wine-active-filters">${esc(whiteWineFiltersSummary(f))}</p>`;
  h+=`<div class="wine-rec-count">${matched.length} ${matched.length===1?'vino':'vinos'} de ${window.WHITE_WINES.length}</div>`;
+ if(matched.length)h+=`<div class="wine-rec-count">Toca un vino para añadirlo a la Mesa ${v.table}.</div>`;
  if(matched.length===0)h+=`<div class="wine-rec-empty">No hay vinos que cumplan todos los filtros. Prueba a quitar alguno.</div>`;
- else h+=`<div class="wine-rec-list">${matched.map(w=>`<article class="wine-rec-item${isUnavailable(w.name)?' is-soldout':''}"><div class="wine-rec-heading"><div class="wine-rec-name">${esc(w.name)}${isUnavailable(w.name)?'<span class="wine-rec-soldout">AGOTADO</span>':''}</div><div class="wine-rec-price">${esc(w.price)} €</div></div><p class="wine-rec-details">${esc(whiteWineRemainingLine(w,f)||'Cumple todos los filtros seleccionados')}</p></article>`).join('')}</div>`;
+ else h+=`<div class="wine-rec-list">${matched.map(w=>wineRecommendationCard(w,v,whiteWineRemainingLine(w,f),'blancos')).join('')}</div>`;
  return h;
 }
 function renderWhiteWineFilters(v){

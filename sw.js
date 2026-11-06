@@ -1,4 +1,4 @@
-const CACHE="elrek-v10-14";
+const CACHE="elrek-v10-15";
 const ASSETS=["./","./index.html","./style.css","./data.js","./white-wines.js","./red-wines.js","./rose-wines.js","./wine-recommender.js","./red-wine-recommender.js","./rose-wine-recommender.js","./app.js","./manifest.webmanifest","./icon.svg"];
 self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener("activate",e=>e.waitUntil(Promise.all([caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))),self.clients.claim()])));

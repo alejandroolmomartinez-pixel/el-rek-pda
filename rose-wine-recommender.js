@@ -99,8 +99,9 @@ function renderRoseWineRecommender(v){
   h+=`<div class="wine-rec-actions"><button class="wine-apply-btn" onclick="openRoseWineFilters()">Aplicar filtros${roseWineSelectedCount(f)?` (${roseWineSelectedCount(f)})`:''}</button>${roseWineSelectedCount(f)?'<button class="wine-clear-btn" onclick="roseWineClearFilters()">Quitar filtros</button>':''}</div>`;
   if(roseWineSelectedCount(f))h+=`<p class="wine-active-filters">${esc(roseWineFiltersSummary(f))}</p>`;
   h+=`<div class="wine-rec-count">${matched.length} ${matched.length===1?'vino':'vinos'} de ${window.ROSE_WINES.length}</div>`;
+  if(matched.length)h+=`<div class="wine-rec-count">Toca un vino para añadirlo a la Mesa ${v.table}.</div>`;
   if(!matched.length)h+='<div class="wine-rec-empty">No hay rosados que cumplan todos los filtros. Prueba a quitar alguno.</div>';
-  else h+=`<div class="wine-rec-list">${matched.map(w=>`<article class="wine-rec-item${isUnavailable(w.name)?' is-soldout':''}"><div class="wine-rec-heading"><div class="wine-rec-name">${esc(w.name)}${isUnavailable(w.name)?'<span class="wine-rec-soldout">AGOTADO</span>':''}</div><div class="wine-rec-price">${esc(w.price)} €</div></div><p class="wine-rec-details">${esc(roseWineRemainingLine(w,f)||'Cumple todos los filtros seleccionados')}</p></article>`).join('')}</div>`;
+  else h+=`<div class="wine-rec-list">${matched.map(w=>wineRecommendationCard(w,v,roseWineRemainingLine(w,f),'rosados')).join('')}</div>`;
   return h;
 }
 function renderRoseWineFilters(v){
